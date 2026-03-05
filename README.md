@@ -20,7 +20,7 @@
 
 ### 🌐 Portfolio Link
 아래 링크를 통해 웹상에서 이력서와 포트폴리오를 확인하실 수 있습니다.
-> **[👉 Chihyeon Yun github.io 바로가기](https://chihyeonyoon.github.io/)**
+> **[👉 Chihyeon Yun github.io](https://chihyeonyoon.github.io/)**
 
 ---
 
