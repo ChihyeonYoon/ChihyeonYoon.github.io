@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chihyeon Yun | AI Researcher Portfolio</title>
+    <title>Chihyeon Yun | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #2c3e50;
             --accent-color: #3498db;
-            --bg-color: #f8f9fa;
+            --bg-color: #f4f7f6;
         }
 
         body, html {
@@ -22,75 +22,73 @@
             flex-direction: column;
         }
 
-        /* 상단 헤더 섹션 */
         header {
             background-color: white;
-            padding: 30px 5%;
+            padding: 20px 5%;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 10;
         }
 
         .profile-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .info h1 {
-            margin: 0;
-            font-size: 2rem;
-            color: var(--primary-color);
-            letter-spacing: -1px;
-        }
-
-        .info p {
-            margin: 5px 0;
-            color: #666;
-            font-size: 1.1rem;
-        }
-
-        .contact {
-            text-align: right;
-        }
+        .info h1 { margin: 0; font-size: 1.8rem; color: var(--primary-color); }
+        .info p { margin: 5px 0; color: #666; }
 
         .contact a {
             text-decoration: none;
-            color: var(--accent-color);
-            font-weight: 500;
-            margin-left: 15px;
+            color: white;
+            background-color: var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
             transition: 0.3s;
         }
 
-        .contact a:hover {
-            color: var(--primary-color);
+        .contact a:hover { background-color: var(--primary-color); }
+
+        /* PDF 2분할 영역 */
+        .viewer-wrapper {
+            display: flex;
+            flex-direction: row;
+            flex-grow: 1;
+            gap: 20px;
+            padding: 20px;
+            background-color: #525659;
         }
 
-        /* PDF 뷰어 영역 */
-        .viewer-container {
-            flex-grow: 1; /* 남은 화면을 꽉 채움 */
-            position: relative;
-            background-color: #525659; /* 일반적인 PDF 뷰어 배경색 */
-            padding: 20px 0;
+        .pdf-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        iframe {
-            width: 90%;
-            height: 95%;
-            border: none;
-            display: block;
-            margin: 0 auto;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        .pdf-label {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            background: rgba(0,0,0,0.3);
+            padding: 5px;
             border-radius: 4px;
         }
 
-        /* 모바일 대응 */
-        @media (max-width: 768px) {
-            .profile-container { flex-direction: column; text-align: center; }
-            .contact { text-align: center; margin-top: 15px; }
-            .contact a { margin: 0 7px; font-size: 0.9rem; }
-            iframe { width: 95%; height: 90%; }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 1024px) {
+            .viewer-wrapper { flex-direction: column; overflow-y: auto; }
+            .pdf-container { height: 800px; min-height: 800px; }
         }
     </style>
 </head>
@@ -99,19 +97,25 @@
 <header>
     <div class="profile-container">
         <div class="info">
-            <h1>Chihyeon Yun <small style="font-size: 0.5em; color: var(--accent-color);">AI Researcher</small></h1>
+            <h1>Chihyeon Yun</h1>
             <p>AI Researcher | ETRI Post-Master's Researcher</p>
         </div>
         <div class="contact">
-            <a href="mailto:chichi8969@naver.com">📧 Email</a>
-            <a href="https://github.com/ChihyeonYoon" target="_blank">🐙 GitHub</a>
-            <a href="pf.pdf" download>📥 Download CV</a>
+            <a href="YCH_CV.pdf" download="Chihyeon_Yun_CV.pdf">📥 Download CV</a>
         </div>
     </div>
 </header>
 
-<div class="viewer-container">
-    <iframe src="pf.pdf#toolbar=0" title="Portfolio PDF"></iframe>
+<div class="viewer-wrapper">
+    <div class="pdf-container">
+        <div class="pdf-label">Curriculum Vitae (CV)</div>
+        <iframe src="YCH_CV.pdf#toolbar=0"></iframe>
+    </div>
+
+    <div class="pdf-container">
+        <div class="pdf-label">Portfolio / Projects</div>
+        <iframe src="pf.pdf#toolbar=0"></iframe>
+    </div>
 </div>
 
 </body>
