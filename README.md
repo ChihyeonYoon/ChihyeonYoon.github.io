@@ -42,11 +42,11 @@
 
 #### 2. Scientific Data (2024)
 **"A Military Audio Dataset for Situational Awareness and Surveillance"**
-* **핵심 연구**: 특수 환경(군사/감시)에서의 상황 인식을 위한 고품질 오디오 데이터셋을 구축하고, 오픈 데이터셋으로 공개하여 관련 도메인 연구 활성화에 기여했습니다. (Scientific Data 11.1 (2024): 668)
+* **핵심 연구**: 특수 환경(군사/감시)에서의 상황 인식을 위한 고품질 오디오 데이터셋을 구축하고, 오픈 데이터셋으로 공개하여 관련 도메인 연구 활성화에 기여했습니다. (Scientific Data 11.1 (2024): 668) (https://www.kaggle.com/datasets/junewookim/mad-dataset-military-audio-dataset)
 
 #### 3. NeurIPS Workshop (2023)
 **"Adversarial Fine-tuning using Generated Respiratory Sound to Address Class Imbalance"**
-* **핵심 연구**: 의료 AI 도메인의 데이터 불균형 문제를 극복하기 위해 Audio Diffusion Neural Vocoder로 생성된 데이터를 활용한 적대적 학습으로 강건한 미세조정(Fine-tuning) 기법을 제안했습니다. (NeurIPS Workshop on Deep Generative Models for Health 2023)
+* **핵심 연구**: 의료 AI 도메인의 데이터 불균형 문제를 극복하기 위해 Audio Diffusion Neural Vocoder로 생성된 데이터를 활용한 적대적 학습으로 강건한 미세조정(Adversarial Fine-tuning) 기법을 제안했습니다. (NeurIPS Workshop on Deep Generative Models for Health 2023)
 
 #### 4. 한국정보과학회 학술발표논문집 (2023)
 **"CutMix-SupCon: Supervised Contrastive Learning with CutMix Augmentation for Multimodal-based Emotion Recognition"**
