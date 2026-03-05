@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chihyeon Yun</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.3.0/github-markdown.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -13,10 +17,12 @@
             --mail-color: #e74c3c;
             --bg-color: #f4f7f6;
         }
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Roboto', sans-serif; background-color: var(--bg-color); display: flex; flex-direction: column; overflow: hidden; }
+        
+        /* 페이지 전체 스크롤이 가능하도록 height와 overflow 속성 수정 */
+        body, html { margin: 0; padding: 0; font-family: 'Roboto', sans-serif; background-color: var(--bg-color); }
         
         /* 헤더 스타일 */
-        header { background-color: white; padding: 15px 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 10; flex-shrink: 0; }
+        header { background-color: white; padding: 15px 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         .header-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         
         /* 프로필 사진 + 이름 정보 정렬 */
@@ -44,8 +50,36 @@
         .btn-download-pf { background-color: white; color: var(--accent-color); border: 1.5px solid var(--accent-color); }
         .btn-download-pf:hover { background-color: var(--accent-color); color: white; }
 
+        /* 컨텐츠 래퍼 (README와 PDF를 감싸는 영역) */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px; /* README와 PDF 사이 간격 */
+        }
+
+        /* README 레이아웃 */
+        .markdown-body {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 45px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
         /* PDF 레이아웃 */
-        .viewer-wrapper { display: flex; flex-direction: row; flex-grow: 1; padding: 15px; gap: 15px; background-color: #525659; overflow: hidden; }
+        .viewer-wrapper { 
+            display: flex; 
+            flex-direction: row; 
+            gap: 20px; 
+            height: 800px; /* PDF 뷰어의 높이 고정 */
+            background-color: #525659; 
+            padding: 20px;
+            border-radius: 10px;
+        }
         .pdf-container { flex: 1; display: flex; flex-direction: column; min-width: 0; }
         .pdf-label { color: white; text-align: center; margin-bottom: 8px; font-size: 0.9rem; font-weight: bold; opacity: 0.9; }
         
@@ -55,8 +89,9 @@
         @media (max-width: 1024px) {
             .header-container { justify-content: center; text-align: center; }
             .info-with-photo { flex-direction: column; gap: 10px; }
-            .viewer-wrapper { flex-direction: column; overflow-y: auto; }
-            .pdf-container { height: 600px; flex: none; }
+            .markdown-body { padding: 25px; }
+            .viewer-wrapper { flex-direction: column; height: 1200px; } /* 모바일에서는 세로로 길게 배치 */
+            .pdf-container { height: 100%; flex: 1; }
         }
     </style>
 </head>
@@ -82,17 +117,39 @@
     </div>
 </header>
 
-<div class="viewer-wrapper">
-    <div class="pdf-container">
-        <div class="pdf-label">Curriculum Vitae</div>
-        <iframe src="./YCH_CV.pdf"></iframe>
+<div class="main-content">
+    <div id="readme-content" class="markdown-body">
+        <p style="text-align: center; color: #666;">Loading README...</p>
     </div>
 
-    <div class="pdf-container">
-        <div class="pdf-label">Portfolio / Project</div>
-        <iframe src="./pf.pdf"></iframe>
+    <div class="viewer-wrapper">
+        <div class="pdf-container">
+            <div class="pdf-label">Curriculum Vitae</div>
+            <iframe src="./YCH_CV.pdf"></iframe>
+        </div>
+
+        <div class="pdf-container">
+            <div class="pdf-label">Portfolio / Project</div>
+            <iframe src="./pf.pdf"></iframe>
+        </div>
     </div>
 </div>
+
+<script>
+    fetch('./README.md')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('README.md 파일을 불러오는데 실패했습니다. 같은 폴더에 파일이 있는지 확인해주세요.');
+            }
+            return response.text();
+        })
+        .then(text => {
+            document.getElementById('readme-content').innerHTML = marked.parse(text);
+        })
+        .catch(error => {
+            document.getElementById('readme-content').innerHTML = `<p style="color: #e74c3c; text-align: center; font-weight: bold;">${error.message}</p>`;
+        });
+</script>
 
 </body>
 </html>
