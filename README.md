@@ -28,7 +28,7 @@
 
 ---
 
-### 📚 Publications (정확한 서지 정보)
+### 📚 Publications
 
 #### 1. IEEE Transactions on Industrial Informatics (In Revision)
 **"Seamless Multi-Hypothesis Video Editing Using Deep Multimodal Analysis Over Multi-Channel Sources"**
