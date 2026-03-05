@@ -4,121 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chihyeon Yun | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #2c3e50;
             --accent-color: #3498db;
+            --github-color: #24292e;
+            --mail-color: #e74c3c;
             --bg-color: #f4f7f6;
         }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Roboto', sans-serif; background-color: var(--bg-color); display: flex; flex-direction: column; overflow: hidden; }
+        
+        /* 헤더 스타일 */
+        header { background-color: white; padding: 15px 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 10; flex-shrink: 0; }
+        .header-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        
+        .info h1 { margin: 0; font-size: 1.6rem; color: var(--primary-color); }
+        .info p { margin: 2px 0; color: #666; font-size: 0.9rem; }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Roboto', 'Nanum Gothic', sans-serif;
-            background-color: var(--bg-color);
-            display: flex;
-            flex-direction: column;
-        }
+        /* 버튼 그룹 스타일 */
+        .button-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn { text-decoration: none; color: white; padding: 8px 16px; border-radius: 6px; font-weight: bold; font-size: 0.85rem; transition: 0.3s; display: flex; align-items: center; gap: 5px; }
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+        
+        .btn-mail { background-color: var(--mail-color); }
+        .btn-github { background-color: var(--github-color); }
+        .btn-download { background-color: var(--accent-color); border: 1px solid var(--accent-color); }
+        .btn-download-pf { background-color: white; color: var(--accent-color); border: 1.5px solid var(--accent-color); }
+        .btn-download-pf:hover { background-color: var(--accent-color); color: white; }
 
-        header {
-            background-color: white;
-            padding: 20px 5%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 10;
-        }
+        /* PDF 레이아웃 */
+        .viewer-wrapper { display: flex; flex-direction: row; flex-grow: 1; padding: 15px; gap: 15px; background-color: #525659; overflow: hidden; }
+        .pdf-container { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+        .pdf-label { color: white; text-align: center; margin-bottom: 8px; font-size: 0.9rem; font-weight: bold; opacity: 0.9; }
+        
+        iframe { width: 100%; height: 100%; border: none; border-radius: 4px; background-color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
-        .profile-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .info h1 { margin: 0; font-size: 1.8rem; color: var(--primary-color); }
-        .info p { margin: 5px 0; color: #666; }
-
-        .contact a {
-            text-decoration: none;
-            color: white;
-            background-color: var(--accent-color);
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .contact a:hover { background-color: var(--primary-color); }
-
-        /* PDF 2분할 영역 */
-        .viewer-wrapper {
-            display: flex;
-            flex-direction: row;
-            flex-grow: 1;
-            gap: 20px;
-            padding: 20px;
-            background-color: #525659;
-        }
-
-        .pdf-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .pdf-label {
-            color: white;
-            text-align: center;
-            margin-bottom: 10px;
-            font-weight: bold;
-            background: rgba(0,0,0,0.3);
-            padding: 5px;
-            border-radius: 4px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 4px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-        }
-
+        /* 반응형 (태블릿/모바일) */
         @media (max-width: 1024px) {
+            .header-container { justify-content: center; text-align: center; }
             .viewer-wrapper { flex-direction: column; overflow-y: auto; }
-            .pdf-container { height: 800px; min-height: 800px; }
+            .pdf-container { height: 600px; flex: none; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="profile-container">
+    <div class="header-container">
         <div class="info">
             <h1>Chihyeon Yun</h1>
-            <p>AI Researcher | ETRI Post-Master's Researcher</p>
+            <p>AI Researcher</p>
         </div>
-        <div class="contact">
-            <a href="YCH_CV.pdf" download="Chihyeon_Yun_CV.pdf">📥 Download CV</a>
+        
+        <div class="button-group">
+            <a href="mailto:chichi8969@naver.com" class="btn btn-mail">✉️ Email</a>
+            <a href="https://github.com/ChihyeonYoon" target="_blank" class="btn btn-github">🔗 GitHub</a>
+            
+            <a href="./YCH_CV.pdf" download="Chihyeon_Yun_CV.pdf" class="btn btn-download">📥 Download CV</a>
+            <a href="./pf.pdf" download="Chihyeon_Yun_Portfolio.pdf" class="btn btn-download btn-download-pf">📥 Download Portfolio</a>
         </div>
     </div>
 </header>
 
 <div class="viewer-wrapper">
     <div class="pdf-container">
-        <div class="pdf-label">Curriculum Vitae (CV)</div>
-        <iframe src="YCH_CV.pdf#toolbar=0"></iframe>
+        <div class="pdf-label">Curriculum Vitae</div>
+        <iframe src="./YCH_CV.pdf"></iframe>
     </div>
 
     <div class="pdf-container">
-        <div class="pdf-label">Portfolio / Projects</div>
-        <iframe src="pf.pdf#toolbar=0"></iframe>
+        <div class="pdf-label">Portfolio / Project</div>
+        <iframe src="./pf.pdf"></iframe>
     </div>
 </div>
 
 </body>
 </html>
-
- 
