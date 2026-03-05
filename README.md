@@ -46,7 +46,7 @@
 
 #### 3. NeurIPS Workshop (2023)
 **"Adversarial Fine-tuning using Generated Respiratory Sound to Address Class Imbalance"**
-* **핵심 연구**: 의료 AI 도메인의 데이터 불균형 문제를 극복하기 위해 Audio Diffusion Neural Vocoder로 생성된 데이터를 활용한 적대적 학습으로 강건한 미세조정(Adversarial Fine-tuning) 기법을 제안했습니다. (NeurIPS Workshop on Deep Generative Models for Health 2023) (https://chihyeonyoon.github.io/Adversarial-Fine-tuning-using-Generated-Respiratory-Sound-to-Address-Class-Imbalance/)
+* **핵심 연구**: 의료 AI 도메인의 데이터 불균형 문제를 극복하기 위해 Audio Diffusion Neural Vocoder로 생성된 데이터를 활용한 적대적 학습으로 강건한 미세조정(Adversarial Fine-tuning) 기법을 제안했습니다. (NeurIPS Workshop on Deep Generative Models for Health 2023) (https://chihyeonyoon.github.io/Adversarial-Fine-tuning-using-Generated-Respiratory-Sound-to-Address-Class-Imbalance/) [arXiv](https://arxiv.org/abs/2311.06480) | [Conference](https://openreview.net/forum?id=z1AVG5LDQ7)
 
 #### 4. 한국정보과학회 학술발표논문집 (2023)
 **"CutMix-SupCon: Supervised Contrastive Learning with CutMix Augmentation for Multimodal-based Emotion Recognition"**
