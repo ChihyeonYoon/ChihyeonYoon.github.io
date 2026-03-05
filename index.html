@@ -19,6 +19,17 @@
         header { background-color: white; padding: 15px 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 10; flex-shrink: 0; }
         .header-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         
+        /* 프로필 사진 + 이름 정보 정렬 */
+        .info-with-photo { display: flex; align-items: center; gap: 15px; }
+        .profile-img { 
+            width: 65px; 
+            height: 65px; 
+            border-radius: 50%; 
+            border: 2px solid var(--accent-color); 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
         .info h1 { margin: 0; font-size: 1.6rem; color: var(--primary-color); }
         .info p { margin: 2px 0; color: #666; font-size: 0.9rem; }
 
@@ -43,6 +54,7 @@
         /* 반응형 (태블릿/모바일) */
         @media (max-width: 1024px) {
             .header-container { justify-content: center; text-align: center; }
+            .info-with-photo { flex-direction: column; gap: 10px; }
             .viewer-wrapper { flex-direction: column; overflow-y: auto; }
             .pdf-container { height: 600px; flex: none; }
         }
@@ -52,9 +64,12 @@
 
 <header>
     <div class="header-container">
-        <div class="info">
-            <h1>Chihyeon Yun</h1>
-            <p>AI Researcher</p>
+        <div class="info-with-photo">
+            <img src="https://github.com/ChihyeonYoon.png" alt="Chihyeon Yun" class="profile-img">
+            <div class="info">
+                <h1>Chihyeon Yun</h1>
+                <p>AI Researcher</p>
+            </div>
         </div>
         
         <div class="button-group">
