@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <a href="https://chihyeonyoon.github.io/">
-    <img src="https://img.shields.io/badge/Portfolio-28CF75?style=flat-square&logo=googlechrome&logoColor=white"/>
-  </a>
   <a href="https://github.com/ChihyeonYoon">
     <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>
+  </a>
+  <a href="https://chihyeonyoon.github.io/">
+    <img src="https://img.shields.io/badge/Portfolio-28CF75?style=flat-square&logo=googlechrome&logoColor=white"/>
   </a>
   <a href="mailto:chichi8969@naver.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=Gmail&logoColor=white"/>
@@ -45,7 +45,7 @@ You can view my CV and Portfolio online via the link below.
 
 #### 3. "Adversarial Fine-tuning using Generated Respiratory Sound to Address Class Imbalance" NeurIPS Workshop (2023)
 * **Key Contribution**: Proposed an Adversarial Fine-tuning technique to overcome data imbalance in the Medical AI domain by utilizing data generated through an Audio Diffusion Neural Vocoder. (NeurIPS Workshop on Deep Generative Models for Health 2023)
-* [Overview Link](https://chihyeonyoon.github.io/Adversarial-Fine-tuning-using-Generated-Respiratory-Sound-to-Address-Class-Imbalance/) | [Github](https://github.com/ChihyeonYoon/Adversarial-Fine-tuning-using-Generated-Respiratory-Sound-to-Address-Class-Imbalance)
+* [Overview Link](https://chihyeonyoon.github.io/Adversarial-Fine-tuning-using-Generated-Respiratory-Sound-to-Address-Class-Imbalance/) | [GitHub](https://github.com/ChihyeonYoon/Adversarial-Fine-tuning-using-Generated-Respiratory-Sound-to-Address-Class-Imbalance)
 * [arXiv](https://arxiv.org/abs/2311.06480) | [Conference](https://openreview.net/forum?id=z1AVG5LDQ7)
 
 #### 4. "CutMix-SupCon: Supervised Contrastive Learning with CutMix Augmentation for Multimodal-based Emotion Recognition" KCC 2023 Proceedings (2023)
