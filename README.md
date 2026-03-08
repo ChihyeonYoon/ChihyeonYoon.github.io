@@ -18,8 +18,8 @@
 
 ---
 
-### 🌐 Personal Links
-You can view my resume and portfolio online via the links below.
+### 🌐 Personal Link
+You can view my CV and Portfolio online via the link below.
 > **[👉 Chihyeon Yun github.io](https://chihyeonyoon.github.io/)**
 
 ---
