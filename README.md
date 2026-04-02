@@ -56,7 +56,7 @@ You can view my CV and Portfolio online via the link below.
 
 ### 👨‍💻 Projects
 
-#### [Chihyeon.ai-Personal-RAG-Assistant](https://github.com/ChihyeonYoon/Chihyeon.ai-Personal-RAG-Assistant)
+#### [Chihyeon.ai-Personal-RAG-Assistant](https://github.com/ChihyeonYoon/Chihyeon.ai-Personal-RAG-Assistant) TRY MY CHAT ASSISTANT!👇
 * **Overview**: A personal **RAG (Retrieval-Augmented Generation) system** designed to provide intelligent answers based on the user's personal data, such as research papers, resumes, and project logs.
 * **Key Features**:
     * **Personalized Context**: Vectors individual achievements and tech stacks into a database to provide in-depth answers grounded in actual research and project history.
