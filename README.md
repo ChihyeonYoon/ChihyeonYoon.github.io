@@ -50,4 +50,31 @@ You can view my CV and Portfolio online via the link below.
 
 #### 4. "CutMix-SupCon: Supervised Contrastive Learning with CutMix Augmentation for Multimodal-based Emotion Recognition" KCC 2023 Proceedings (2023)
 * **Key Contribution**: Enhanced the efficiency of multimodal emotion recognition by combining Feature-level CutMix augmentation with Supervised Contrastive Learning (SupCon) to address data imbalance. (KCC 2023 Proceedings: 2112-2114)
-* [DBpia](
+* [DBpia](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11488648)
+
+---
+
+### 👨‍💻 Projects
+
+#### [Chihyeon.ai-Personal-RAG-Assistant](https://github.com/ChihyeonYoon/Chihyeon.ai-Personal-RAG-Assistant)
+* **Overview**: A personal **RAG (Retrieval-Augmented Generation) system** designed to provide intelligent answers based on the user's personal data, such as research papers, resumes, and project logs.
+* **Key Features**:
+    * **Personalized Context**: Vectors individual achievements and tech stacks into a database to provide in-depth answers grounded in actual research and project history.
+    * **Multi-Format Support**: Analyzes and embeds various personal documents, including PDF and Markdown, to build a comprehensive knowledge base.
+* **Tech Stack**: LangChain, OpenAI API / Local LLM, Vector DB (ChromaDB), Python
+
+#### [Unity Pick and Place Integration with SmolVLA](https://github.com/ChihyeonYoon/Unity_PickAndPlace_Integration_SmolVLA)
+* **Overview**: An end-to-end integration of the **SmolVLA (Vision-Language-Action)** model within a Unity simulation environment to perform robotic 'Pick and Place' tasks.
+* **Vibe Coding Methodology**:
+    * Actively embraced the **Vibe Coding** paradigm by leveraging LLMs to handle complex boilerplate and system interfacing, allowing me to focus on high-level architecture and the reasoning logic of the VLA model.
+    * Drastically reduced the development cycle from conceptualization to Docker-based deployment by treating natural language as a primary driver for rapid prototyping and simulation control.
+* **Tech Stack**: SmolVLA, Multimodal LLM, Unity Engine, ROS, Docker, PyTorch
+
+---
+
+### 📩 Contact
+* **Email**: [chichi8969@naver.com](mailto:chichi8969@naver.com)
+* **GitHub**: [@ChihyeonYoon](https://github.com/ChihyeonYoon)
+
+---
+<p align="center">© 2026 Chihyeon Yun. All rights reserved.</p>
