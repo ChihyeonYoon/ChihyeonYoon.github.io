@@ -54,6 +54,20 @@ You can view my CV and Portfolio online via the link below.
 
 ---
 
+### 👨‍💻 Projects
+
+#### [Unity Pick and Place Integration with SmolVLA](https://github.com/ChihyeonYoon/Unity_PickAndPlace_Integration_SmolVLA)
+* **Overview**: An end-to-end integration of the **SmolVLA (Vision-Language-Action)** model within a Unity simulation environment to perform robotic 'Pick and Place' tasks.
+* **Vibe Coding Methodology**:
+    * Actively embraced the **Vibe Coding** paradigm by leveraging LLMs to handle complex boilerplate and system interfacing, allowing me to focus on high-level architecture and the reasoning logic of the VLA model.
+    * Drastically reduced the development cycle from conceptualization to Docker-based deployment by treating natural language as a primary driver for rapid prototyping and simulation control.
+* **Tech Stack**:
+    * **AI/ML**: SmolVLA, Multimodal LLM, Vision-Language-Action Models
+    * **Simulation**: Unity Engine, C# (Robot Controller), URDF
+    * **DevOps**: ROS, Docker, Python, PyTorch
+
+---
+
 ### 📩 Contact
 * **Email**: [chichi8969@naver.com](mailto:chichi8969@naver.com)
 * **GitHub**: [@ChihyeonYoon](https://github.com/ChihyeonYoon)
