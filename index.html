@@ -190,8 +190,9 @@
 
 <!-- Floating Chatbot Widget -->
 <div id="rag-chatbot-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: 'Roboto', sans-serif;">
-    <button id="chat-toggle-btn" style="width: 60px; height: 60px; border-radius: 50%; background-color: #3498db; color: white; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 24px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s;">
-        💬
+    <button id="chat-toggle-btn" style="height: 55px; padding: 0 20px; border-radius: 30px; background-color: #3498db; color: white; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-size: 15px; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
+        <span id="chat-toggle-icon" style="font-size: 22px; line-height: 1;">💬</span>
+        <span id="chat-toggle-text">Chihyeon.ai RAG Assistant</span>
     </button>
 
     <div id="chat-window" style="display: none; position: absolute; bottom: 80px; right: 0; width: 350px; height: 500px; background-color: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); flex-direction: column; overflow: hidden; border: 1px solid #ddd;">
@@ -223,18 +224,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Vercel Serverless Function URL (치현님이 배포 후 변경할 주소)
     const WORKER_URL = "https://y-chihyeon.vercel.app/api"; 
 
+    const toggleIcon = document.getElementById('chat-toggle-icon');
+    const toggleText = document.getElementById('chat-toggle-text');
     let isOpen = false;
 
     toggleBtn.onclick = () => {
         isOpen = !isOpen;
         chatWindow.style.display = isOpen ? 'flex' : 'none';
-        toggleBtn.style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0deg)';
+        if (isOpen) {
+            toggleIcon.textContent = '✕';
+            toggleText.textContent = '닫기';
+            toggleBtn.style.backgroundColor = '#e74c3c'; // 열렸을 때 빨간색으로 변경
+        } else {
+            toggleIcon.textContent = '💬';
+            toggleText.textContent = 'Chihyeon.ai RAG Assistant';
+            toggleBtn.style.backgroundColor = '#3498db'; // 닫혔을 때 원래 파란색
+        }
     };
 
     closeBtn.onclick = () => {
         isOpen = false;
         chatWindow.style.display = 'none';
-        toggleBtn.style.transform = 'rotate(0deg)';
+        toggleIcon.textContent = '💬';
+        toggleText.textContent = 'Chihyeon.ai RAG Assistant';
+        toggleBtn.style.backgroundColor = '#3498db';
     };
 
     function addMessage(sender, text) {
