@@ -223,13 +223,53 @@
     </div>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('chat-toggle-btn');
+    const chatWindow = document.getElementById('chat-window');
+    const closeBtn = document.getElementById('close-chat');
+
+    let isOpen = false;
+
+    toggleBtn.onclick = () => {
+        isOpen = !isOpen;
+        chatWindow.style.display = isOpen ? 'flex' : 'none';
+        toggleBtn.style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0deg)';
+    };
+
+    closeBtn.onclick = () => {
+        isOpen = false;
+        chatWindow.style.display = 'none';
+        toggleBtn.style.transform = 'rotate(0deg)';
+    };
+
+    const keys = ['google-api-key', 'pinecone-api-key', 'pinecone-index', 'pinecone-env'];
+    const saveBtn = document.getElementById('save-settings');
+    const loadSettings = () => {
+        keys.forEach(k => {
+            const val = localStorage.getItem(k);
+            if (val) document.getElementById(k).value = val;
+        });
+    };
+    if (saveBtn) {
+        saveBtn.onclick = () => {
+            keys.forEach(k => {
+                localStorage.setItem(k, document.getElementById(k).value);
+            });
+            alert('Settings saved!');
+        };
+    }
+    loadSettings();
+});
+</script>
+
 <script type="importmap">
 {
   "imports": {
     "@langchain/google-genai": "https://esm.sh/@langchain/google-genai",
     "@pinecone-database/pinecone": "https://esm.sh/@pinecone-database/pinecone",
     "@langchain/pinecone": "https://esm.sh/@langchain/pinecone",
-    "langchain/chains": "https://esm.sh/langchain/chains",
+    "langchain/chains": "https://esm.sh/langchain@0.2.14/chains",
     "@langchain/core/prompts": "https://esm.sh/@langchain/core/prompts"
   }
 }
@@ -241,42 +281,9 @@ import { PineconeStore } from "@langchain/pinecone";
 import { RetrievalQAChain } from "langchain/chains";
 import { PromptTemplate } from "@langchain/core/prompts";
 
-const toggleBtn = document.getElementById('chat-toggle-btn');
-const chatWindow = document.getElementById('chat-window');
-const closeBtn = document.getElementById('close-chat');
 const sendBtn = document.getElementById('send-btn');
 const chatInput = document.getElementById('chat-input');
 const chatMessages = document.getElementById('chat-messages');
-const saveBtn = document.getElementById('save-settings');
-
-let isOpen = false;
-
-toggleBtn.onclick = () => {
-    isOpen = !isOpen;
-    chatWindow.style.display = isOpen ? 'flex' : 'none';
-    toggleBtn.style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0deg)';
-};
-
-closeBtn.onclick = () => {
-    isOpen = false;
-    chatWindow.style.display = 'none';
-    toggleBtn.style.transform = 'rotate(0deg)';
-};
-
-const keys = ['google-api-key', 'pinecone-api-key', 'pinecone-index', 'pinecone-env'];
-const loadSettings = () => {
-    keys.forEach(k => {
-        const val = localStorage.getItem(k);
-        if (val) document.getElementById(k).value = val;
-    });
-};
-saveBtn.onclick = () => {
-    keys.forEach(k => {
-        localStorage.setItem(k, document.getElementById(k).value);
-    });
-    alert('Settings saved!');
-};
-loadSettings();
 
 function addMessage(sender, text) {
     const msgDiv = document.createElement('div');
