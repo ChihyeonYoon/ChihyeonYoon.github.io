@@ -50,28 +50,4 @@ You can view my CV and Portfolio online via the link below.
 
 #### 4. "CutMix-SupCon: Supervised Contrastive Learning with CutMix Augmentation for Multimodal-based Emotion Recognition" KCC 2023 Proceedings (2023)
 * **Key Contribution**: Enhanced the efficiency of multimodal emotion recognition by combining Feature-level CutMix augmentation with Supervised Contrastive Learning (SupCon) to address data imbalance. (KCC 2023 Proceedings: 2112-2114)
-* [DBpia](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11488648&buildDate=2026-02-24+10%3A04%3A31&nowDate=20260303_1&cdnUrl=https%3A%2F%2Fcdn.dbpia.co.kr%2Fstatic&buildTime=20260224100431&minify=.min&appVersion=1.0.0&nodeId=NODE11488648&mobileYN=N&medaTypeCode=185005&isPDFSizeAllowed=true&locale=ko&foreignIpYn=N&articleTitle=CutMix-SupCon%3A+CutMix+%EC%A6%9D%EA%B0%95%EA%B3%BC+%EC%A7%80%EB%8F%84+%EB%8C%80%EC%A1%B0+%ED%95%99%EC%8A%B5%EC%9D%84+%ED%99%9C%EC%9A%A9%ED%95%9C+%EB%A9%80%ED%8B%B0%EB%AA%A8%EB%8B%AC+%EA%B8%B0%EB%B0%98+%EA%B0%90%EC%A0%95%EC%9D%B8%EC%8B%9D&articleTitleEn=CutMix-SupCon%3A+Supervised+Contrastive+Learning+with+CutMix+Augmentation+for+Multimodal-based+Emotion+Recognition&voisId=VOIS00726737&voisName=%ED%95%9C%EA%B5%AD%EC%A0%95%EB%B3%B4%EA%B3%BC%ED%95%99%ED%9A%8C+2023+%ED%95%9C%EA%B5%AD%EC%BB%B4%ED%93%A8%ED%84%B0%EC%A2%85%ED%95%A9%ED%95%99%EC%88%A0%EB%8C%80%ED%9A%8C+%EB%85%BC%EB%AC%B8%EC%A7%91&voisCnt=732&searchResultKey=%2FlMfWK6MWZi5N74t6Fqz8UQcUOwv%2FslS4mPcqI4dGZgk8ljuhcW5xDnI5QeCG48V&language=ko_KR&hasTopBanner=true)
-
----
-
-### 👨‍💻 Projects
-
-#### [Unity Pick and Place Integration with SmolVLA](https://github.com/ChihyeonYoon/Unity_PickAndPlace_Integration_SmolVLA)
-* **Overview**: An end-to-end integration of the **SmolVLA (Vision-Language-Action)** model within a Unity simulation environment to perform robotic 'Pick and Place' tasks.
-* **Vibe Coding Methodology**:
-    * Actively embraced the **Vibe Coding** paradigm by leveraging LLMs to handle complex boilerplate and system interfacing, allowing me to focus on high-level architecture and the reasoning logic of the VLA model.
-    * Drastically reduced the development cycle from conceptualization to Docker-based deployment by treating natural language as a primary driver for rapid prototyping and simulation control.
-* **Tech Stack**:
-    * **AI/ML**: SmolVLA, Multimodal LLM, Vision-Language-Action Models
-    * **Simulation**: Unity Engine, C# (Robot Controller), URDF
-    * **DevOps**: ROS, Docker, Python, PyTorch
-
----
-
-### 📩 Contact
-* **Email**: [chichi8969@naver.com](mailto:chichi8969@naver.com)
-* **GitHub**: [@ChihyeonYoon](https://github.com/ChihyeonYoon)
-
----
-<p align="center">© 2026 Chihyeon Yun. All rights reserved.</p>
-
+* [DBpia](
