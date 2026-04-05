@@ -56,12 +56,15 @@ You can view my CV and Portfolio online via the link below.
 
 ### 👨‍💻 Projects
 
-#### [Chihyeon.ai-Personal-RAG-Assistant](https://github.com/ChihyeonYoon/Chihyeon.ai-Personal-RAG-Assistant) TRY MY CHAT ASSISTANT!👇
-* **Overview**: A personal **RAG (Retrieval-Augmented Generation) system** designed to provide intelligent answers based on the user's personal data, such as research papers, resumes, and project logs.
-* **Key Features**:
-    * **Personalized Context**: Vectors individual achievements and tech stacks into a database to provide in-depth answers grounded in actual research and project history.
-    * **Multi-Format Support**: Analyzes and embeds various personal documents, including PDF and Markdown, to build a comprehensive knowledge base.
-* **Tech Stack**: LangChain, OpenAI API / Local LLM, Vector DB (ChromaDB), Python
+#### [Chihyeon.ai-Personal-RAG-Assistant](https://github.com/ChihyeonYoon/Chihyeon.ai-Personal-RAG-Assistant) **TRY MY CHAT ASSISTANT!** 👇
+
+*   **Overview**: A sophisticated personal RAG system that serves as an interactive AI secretary, providing high-fidelity, grounded answers based on my academic research papers, CV, and project documentation.
+*   **Key Features**:
+    *   **High-Fidelity Parsing**: Leverages **LlamaParse** and **Jina Reader API** to flawlessly extract complex academic layouts, mathematical formulas, and JS-rendered web content.
+    *   **Context-Aware Chat**: Supports multi-turn dialogue with session memory, enabling natural follow-up questions and deeper engagement with the knowledge base.
+    *   **Secure & Global Architecture**: Uses a **Vercel-based proxy** to secure API credentials and bypass regional restrictions, ensuring a seamless experience for visitors worldwide.
+    *   **State-of-the-Art Intelligence**: Powered by **Gemini 2.5 Flash** for near-instant, streaming responses grounded in a high-dimensional (3072-dim) Pinecone vector space.
+*   **Tech Stack**: Gemini 2.5 Flash, Pinecone (Serverless), Vercel Functions, LlamaParse, Jina Reader, Python, Vanilla JS.
 
 #### [Unity Pick and Place Integration with SmolVLA](https://github.com/ChihyeonYoon/Unity_PickAndPlace_Integration_SmolVLA)
 * **Overview**: An end-to-end integration of the **SmolVLA (Vision-Language-Action)** model within a Unity simulation environment to perform robotic 'Pick and Place' tasks.

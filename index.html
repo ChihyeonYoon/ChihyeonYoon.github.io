@@ -227,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleIcon = document.getElementById('chat-toggle-icon');
     const toggleText = document.getElementById('chat-toggle-text');
     let isOpen = false;
+    let chatHistory = []; // 대화 맥락 기억용
 
     toggleBtn.onclick = () => {
         isOpen = !isOpen;
@@ -290,13 +291,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         addMessage('user', text);
         chatInput.value = '';
+        // 사용자 질문을 역사에 추가
+        chatHistory.push({ role: 'user', text: text });
         const loadingMsg = addMessage('ai', '생각 중...');
         
         try {
             const response = await fetch(WORKER_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ query: text })
+                body: JSON.stringify({ query: text, history: chatHistory.slice(-4) }) // 최근 4개 대화만 전송
             });
             
             if (!response.ok) {
@@ -327,6 +330,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         } catch(e) {}
                     }
                 }
+            }
+            // AI 답변이 완료되면 역사에 추가
+            if (fullResponse) {
+                chatHistory.push({ role: 'model', text: fullResponse });
             }
         } catch (e) {
             console.error("Chat error:", e);
