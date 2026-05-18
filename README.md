@@ -35,7 +35,7 @@ You can view my CV and Portfolio online via the link below.
 
 ### 📚 Publications
 
-#### 1. "Seamless Multi-Hypothesis Video Editing Using Deep Multimodal Analysis Over Multi-Channel Sources" IEEE Transactions on Industrial Informatics (In Revision)
+#### 1. "Seamless Multi-Hypothesis Video Editing Using Deep Multimodal Analysis Over Multi-Channel Sources" (Pending Submission)
 * **Key Contribution**: A system that automatically generates professional-level video edits by analyzing visual and audio data collected from multi-camera environments.
 * **Technologies**: Implemented natural camera transitions using Speaker State Estimation, Multi-Hypothesis Generation, and Beam Search Optimization.
 
