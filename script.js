@@ -166,13 +166,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return msgDiv;
     }
 
-    sendBtn.onclick = async () => {
-        const text = chatInput.value.trim();
-        if (!text) return;
+    let lastUserQuery = "";
+
+    async function performChatQuery(text, isRetry = false) {
+        if (!isRetry) {
+            addMessage('user', text);
+            chatHistory.push({ role: 'user', text: text });
+        }
         
-        addMessage('user', text);
-        chatInput.value = '';
-        chatHistory.push({ role: 'user', text: text });
         const isKo = document.body.classList.contains('lang-ko');
         const loadingText = isKo ? '생각 중...' : 'Thinking...';
         const loadingMsg = addMessage('ai', `<span style="color: var(--text-muted);">${loadingText}</span>`);
@@ -181,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(WORKER_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ query: text, history: chatHistory.slice(-4) })
+                body: JSON.stringify({ query: text, history: chatHistory.slice(-10) })
             });
             
             if (!response.ok) {
@@ -226,7 +227,82 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Chat error:", e);
             const errorText = isKo ? '오류 발생: ' : 'Error: ';
             loadingMsg.innerHTML = '<span style="color: #ef4444;">❌ ' + errorText + e.message + '</span>';
+            
+            const actionContainer = document.createElement('div');
+            actionContainer.className = 'chat-action-container';
+            actionContainer.style.display = 'flex';
+            actionContainer.style.gap = '8px';
+            actionContainer.style.marginTop = '6px';
+            actionContainer.style.marginBottom = '10px';
+            actionContainer.style.alignSelf = 'flex-start';
+            actionContainer.style.marginLeft = '12px';
+            actionContainer.style.fontSize = '0.75rem';
+            
+            const retryBtn = document.createElement('button');
+            retryBtn.style.background = 'rgba(59, 130, 246, 0.15)';
+            retryBtn.style.border = '1px solid rgba(59, 130, 246, 0.3)';
+            retryBtn.style.color = '#93c5fd';
+            retryBtn.style.padding = '4px 8px';
+            retryBtn.style.borderRadius = '6px';
+            retryBtn.style.cursor = 'pointer';
+            retryBtn.style.display = 'flex';
+            retryBtn.style.alignItems = 'center';
+            retryBtn.style.gap = '4px';
+            retryBtn.style.fontFamily = 'inherit';
+            retryBtn.style.transition = 'all 0.2s';
+            retryBtn.innerHTML = isKo ? '🔄 재시도' : '🔄 Retry';
+            
+            const cancelBtn = document.createElement('button');
+            cancelBtn.style.background = 'rgba(255, 255, 255, 0.05)';
+            cancelBtn.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+            cancelBtn.style.color = 'var(--text-secondary)';
+            cancelBtn.style.padding = '4px 8px';
+            cancelBtn.style.borderRadius = '6px';
+            cancelBtn.style.cursor = 'pointer';
+            cancelBtn.style.fontFamily = 'inherit';
+            cancelBtn.style.transition = 'all 0.2s';
+            cancelBtn.innerHTML = '✕';
+            
+            retryBtn.onmouseenter = () => {
+                retryBtn.style.background = 'rgba(59, 130, 246, 0.25)';
+                retryBtn.style.borderColor = 'rgba(59, 130, 246, 0.5)';
+            };
+            retryBtn.onmouseleave = () => {
+                retryBtn.style.background = 'rgba(59, 130, 246, 0.15)';
+                retryBtn.style.borderColor = 'rgba(59, 130, 246, 0.3)';
+            };
+            cancelBtn.onmouseenter = () => {
+                cancelBtn.style.background = 'rgba(255, 255, 255, 0.1)';
+                cancelBtn.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            };
+            cancelBtn.onmouseleave = () => {
+                cancelBtn.style.background = 'rgba(255, 255, 255, 0.05)';
+                cancelBtn.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            };
+            
+            retryBtn.onclick = () => {
+                actionContainer.remove();
+                loadingMsg.remove();
+                performChatQuery(lastUserQuery, true);
+            };
+            
+            cancelBtn.onclick = () => {
+                actionContainer.remove();
+            };
+            
+            actionContainer.appendChild(retryBtn);
+            actionContainer.appendChild(cancelBtn);
+            chatMessages.appendChild(actionContainer);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
+    }
+
+    sendBtn.onclick = () => {
+        const text = chatInput.value.trim();
+        if (!text) return;
+        chatInput.value = '';
+        lastUserQuery = text;
+        performChatQuery(text, false);
     };
 
     chatInput.onkeypress = (e) => { if (e.key === 'Enter') sendBtn.click(); };
