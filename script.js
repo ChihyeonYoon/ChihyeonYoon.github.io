@@ -235,6 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const reader = response.body.getReader();
             const decoder = new TextDecoder("utf-8");
             let fullResponse = "";
+            let groundingMetadata = null;
             loadingMsg.innerHTML = "";
 
             while (true) {
@@ -248,22 +249,89 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (dataStr.trim() === "[DONE]") continue;
                         try {
                             const data = JSON.parse(dataStr);
-                            const chunkText = data.candidates[0].content.parts[0].text;
-                            fullResponse += chunkText;
-                            
-                            let html = fullResponse.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                            html = html.replace(/^\* (.*?)$/gm, '<li>$1</li>');
-                            html = html.replace(/^- (.*?)$/gm, '<li>$1</li>');
-                            html = html.replace(/\n/g, '<br/>');
-                            
-                            loadingMsg.innerHTML = html;
-                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                            if (data.candidates && data.candidates[0]) {
+                                const candidate = data.candidates[0];
+                                if (candidate.content && candidate.content.parts && candidate.content.parts[0]) {
+                                    const chunkText = candidate.content.parts[0].text || "";
+                                    fullResponse += chunkText;
+                                    
+                                    let html = fullResponse.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                                    html = html.replace(/^\* (.*?)$/gm, '<li>$1</li>');
+                                    html = html.replace(/^- (.*?)$/gm, '<li>$1</li>');
+                                    html = html.replace(/\n/g, '<br/>');
+                                    
+                                    loadingMsg.innerHTML = html;
+                                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                                }
+                                
+                                if (candidate.groundingMetadata) {
+                                    if (!groundingMetadata) {
+                                        groundingMetadata = { webSearchQueries: [], groundingChunks: [], searchEntryPoint: null };
+                                    }
+                                    if (candidate.groundingMetadata.webSearchQueries) {
+                                        groundingMetadata.webSearchQueries = candidate.groundingMetadata.webSearchQueries;
+                                    }
+                                    if (candidate.groundingMetadata.groundingChunks) {
+                                        candidate.groundingMetadata.groundingChunks.forEach(chunk => {
+                                            if (chunk.web && chunk.web.uri) {
+                                                const exists = groundingMetadata.groundingChunks.some(c => c.web && c.web.uri === chunk.web.uri);
+                                                if (!exists) {
+                                                    groundingMetadata.groundingChunks.push(chunk);
+                                                }
+                                            }
+                                        });
+                                    }
+                                    if (candidate.groundingMetadata.searchEntryPoint) {
+                                        groundingMetadata.searchEntryPoint = candidate.groundingMetadata.searchEntryPoint;
+                                    }
+                                }
+                            }
                         } catch(e) {}
                     }
                 }
             }
             if (fullResponse) {
                 chatHistory.push({ role: 'model', text: fullResponse });
+            }
+
+            // Render grounding metadata citations if present
+            if (groundingMetadata && groundingMetadata.groundingChunks && groundingMetadata.groundingChunks.length > 0) {
+                const citationHeader = isKo ? '🔍 참고 출처' : '🔍 Sources';
+                let citationHtml = `<div class="chat-citations" style="margin-top: 12px; padding-top: 8px; border-top: 1px solid rgba(0, 0, 0, 0.08); font-size: 0.75rem; color: var(--text-secondary);">`;
+                citationHtml += `<div style="font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 4px; color: var(--text-primary);"><span style="font-size: 0.8rem;">🌐</span> ${citationHeader}</div>`;
+                citationHtml += `<ul style="margin: 0; padding-left: 0; list-style-type: none; display: flex; flex-direction: column; gap: 4px;">`;
+                
+                groundingMetadata.groundingChunks.forEach((chunk, index) => {
+                    if (chunk.web) {
+                        const title = chunk.web.title || chunk.web.uri;
+                        const uri = chunk.web.uri;
+                        let domain = "";
+                        try {
+                            domain = new URL(uri).hostname;
+                        } catch(err) {
+                            domain = uri;
+                        }
+                        citationHtml += `<li style="margin-bottom: 2px;">
+                            <a href="${uri}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">
+                                <span style="background: rgba(37, 99, 235, 0.08); color: var(--accent-blue); padding: 1px 5px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(37, 99, 235, 0.15);">${index + 1}</span>
+                                <span style="text-decoration: underline; font-weight: 500; text-underline-offset: 2px;">${title}</span>
+                                <span style="color: var(--text-muted); font-size: 0.7rem;">(${domain})</span>
+                            </a>
+                        </li>`;
+                    }
+                });
+                citationHtml += `</ul>`;
+                
+                if (groundingMetadata.searchEntryPoint && groundingMetadata.searchEntryPoint.renderedContent) {
+                    citationHtml += `<div class="google-search-entry-point" style="margin-top: 10px;">`;
+                    citationHtml += groundingMetadata.searchEntryPoint.renderedContent;
+                    citationHtml += `</div>`;
+                }
+                
+                citationHtml += `</div>`;
+                
+                loadingMsg.innerHTML += citationHtml;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             }
         } catch (e) {
             console.error("Chat error:", e);
