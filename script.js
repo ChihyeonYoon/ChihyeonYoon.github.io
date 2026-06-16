@@ -397,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
     koBtn.addEventListener('click', () => setLanguage('ko'));
     enBtn.addEventListener('click', () => setLanguage('en'));
 
-    // Load saved language or default to 'ko'
-    const savedLang = localStorage.getItem('portfolio-lang') || 'ko';
+    // Load saved language or default to 'en'
+    const savedLang = localStorage.getItem('portfolio-lang') || 'en';
     setLanguage(savedLang);
 });
