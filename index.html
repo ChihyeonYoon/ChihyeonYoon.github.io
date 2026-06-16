@@ -3,350 +3,544 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chihyeon Yun</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.3.0/github-markdown.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --github-color: #24292e;
-            --mail-color: #e74c3c;
-            --bg-color: #f4f7f6;
-        }
-        
-        body, html { margin: 0; padding: 0; font-family: 'Roboto', sans-serif; background-color: var(--bg-color); }
-        
-        /* 헤더 스타일 */
-        header { background-color: white; padding: 15px 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        .header-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        
-        /* 프로필 사진 + 이름 정보 정렬 */
-        .info-with-photo { display: flex; align-items: center; gap: 15px; }
-        .profile-img { 
-            width: 65px; 
-            height: 65px; 
-            border-radius: 50%; 
-            border: 2px solid var(--accent-color); 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            object-fit: cover;
-        }
-
-        .info h1 { margin: 0; font-size: 1.6rem; color: var(--primary-color); }
-        .info p { margin: 2px 0; color: #666; font-size: 0.9rem; }
-
-        /* 버튼 그룹 스타일 */
-        .button-group { display: flex; gap: 10px; flex-wrap: wrap; }
-        .btn { text-decoration: none; color: white; padding: 8px 16px; border-radius: 6px; font-weight: bold; font-size: 0.85rem; transition: 0.3s; display: flex; align-items: center; gap: 5px; }
-        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
-        
-        .btn-mail { background-color: var(--mail-color); }
-        .btn-github { background-color: var(--github-color); }
-        .btn-download { background-color: var(--accent-color); border: 1px solid var(--accent-color); }
-        .btn-download-pf { background-color: white; color: var(--accent-color); border: 1.5px solid var(--accent-color); }
-        .btn-download-pf:hover { background-color: var(--accent-color); color: white; }
-
-        /* 메인 컨텐츠 래퍼 */
-        .main-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 5%;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        /* 💡 공통 카드 스타일: 기존에 쓰시던 짙은 회색 적용 */
-        .content-card {
-            background-color: #525659; /* 요청하신 짙은 회색 */
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            padding: 40px;
-            box-sizing: border-box;
-            width: 100%;
-            color: #ffffff; /* 기본 글자색 흰색 */
-        }
-
-        /* 💡 README 마크다운 강제 스타일 오버라이딩 (어두운 배경에 맞게) */
-        .markdown-body {
-            background-color: transparent !important; 
-            color: #ffffff !important;
-        }
-        .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6,
-        .markdown-body p, .markdown-body li, .markdown-body blockquote, .markdown-body table, .markdown-body span {
-            color: #ffffff !important;
-        }
-        /* 마크다운 내 구분선 및 테두리 밝은 회색으로 */
-        .markdown-body h1, .markdown-body h2, .markdown-body hr, .markdown-body table th, .markdown-body table td {
-            border-color: #7a7e81 !important; 
-        }
-        /* 마크다운 내 링크 밝은 파란색으로 */
-        .markdown-body a {
-            color: #6cb6ff !important; 
-        }
-        /* 코드 블럭 어두운 투명 배경 */
-        .markdown-body pre, .markdown-body code {
-            background-color: rgba(0, 0, 0, 0.3) !important;
-            color: #e6e6e6 !important;
-        }
-
-        /* 2단 레이아웃 스타일 */
-        .portfolio-item { 
-            display: flex; 
-            flex-direction: row; 
-            gap: 40px; 
-            align-items: center; 
-            justify-content: space-between;
-            margin-bottom: 50px; 
-            border-bottom: 1.5px solid #7a7e81;
-            padding-bottom: 40px;
-        }
-        /* 마지막 항목의 하단 구분선 제거 */
-        .portfolio-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-        
-        .portfolio-info { 
-            flex: 1.3; 
-            min-width: 320px; 
-        }
-        
-        .portfolio-preview { 
-            flex: 0.7; 
-            min-width: 280px; 
-            text-align: center;
-        }
-        
-        .portfolio-preview img { 
-            width: 100%; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
-            border: 1px solid #7a7e81;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .portfolio-preview img:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-        }
-
-        /* 반응형 (태블릿/모바일) */
-        @media (max-width: 1024px) {
-            .header-container { justify-content: center; text-align: center; }
-            .info-with-photo { flex-direction: column; gap: 10px; }
-            .content-card { padding: 25px; }
-            .portfolio-item { flex-direction: column; gap: 25px; align-items: stretch; }
-            .portfolio-preview { text-align: center; }
-        }
-    </style>
+    <title>Chihyeon Yun — Portfolio Demo</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- MathJax for LaTeX Math rendering -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
+<!-- Dynamic Background Elements -->
+<div class="glow-bg"></div>
+<div class="glow-bg-secondary"></div>
+<canvas id="particles-canvas"></canvas>
+
 <header>
     <div class="header-container">
-        <div class="info-with-photo">
-            <img src="https://github.com/ChihyeonYoon.png" alt="Chihyeon Yun" class="profile-img">
-            <div class="info">
-                <h1>Chihyeon Yun</h1>
-                <p>AI Researcher</p>
+        <div class="header-logo">Chihyeon.ai</div>
+        <div class="header-right">
+            <nav class="nav-links">
+                <a href="#about" class="nav-link"><span class="ko-only">소개</span><span class="en-only">About</span></a>
+                <a href="#projects" class="nav-link"><span class="ko-only">프로젝트</span><span class="en-only">Projects</span></a>
+                <a href="#publications" class="nav-link"><span class="ko-only">학술실적</span><span class="en-only">Publications</span></a>
+            </nav>
+            <div class="lang-switch-container">
+                <button id="lang-ko-btn" class="lang-btn active">KO</button>
+                <button id="lang-en-btn" class="lang-btn">EN</button>
             </div>
-        </div>
-        
-        <div class="button-group">
-            <a href="mailto:chichi8969@naver.com" class="btn btn-mail">✉️ Email</a>
-            <a href="https://github.com/ChihyeonYoon" target="_blank" class="btn btn-github">🔗 GitHub</a>
-            
-            <a href="./YCH_CV.pdf" download="Chihyeon_Yun_CV.pdf" class="btn btn-download">📥 Download CV</a>
-            <a href="./Portfolio.pdf" download="Chihyeon_Yun_Portfolio.pdf" class="btn btn-download btn-download-pf">📥 Download Portfolio</a>
         </div>
     </div>
 </header>
 
-<div class="main-content">
-    <div class="content-card">
-        <div id="readme-content" class="markdown-body">
-            <p style="text-align: center; color: #ffffff;">Loading README...</p>
+<div class="container">
+    <div class="bento-grid">
+        
+        <!-- Hero Box (Profile & Headline) -->
+        <div id="about" class="bento-card col-12 reveal">
+            <div class="profile-card">
+                <div class="profile-img-container">
+                    <img src="https://github.com/ChihyeonYoon.png" alt="Chihyeon Yun" class="profile-img">
+                    <div class="profile-img-glow"></div>
+                </div>
+                <div class="profile-info">
+                    <div class="status-badge">
+                        <div class="status-dot"></div>
+                        <span class="ko-only">새로운 연구 기회 구직 중</span>
+                        <span class="en-only">Available for Research Opportunities</span>
+                    </div>
+                    <h1>Chihyeon Yun</h1>
+                    <p class="hero-sub">
+                        <span class="ko-only">멀티모달 융합 학습, 3D 공간 컴퓨팅(3DGS / VPS), 의료 AI 및 로봇 행동 모델(VLA) 분야에 특화된 AI 연구원 & 엔지니어</span>
+                        <span class="en-only">AI Researcher & Engineer specializing in Multimodal Learning, 3D Spatial Computing (3DGS / VPS), Medical AI, and Vision-Language-Action (VLA) Robotics.</span>
+                    </p>
+                    <ul class="hero-desc-list">
+                        <li class="ko-only"><strong>공간 AI & 메타버스 (ETRI)</strong>: 현실-가상 연동을 위한 초정밀 시각 기반 위치 추정(VPS) 알고리즘 및 VLM 기반 이상행위 제로샷 탐지 기술 개발.</li>
+                        <li class="en-only"><strong>Spatial AI & Metaverse (ETRI)</strong>: Engineered high-accuracy Visual Positioning Systems (VPS) for cyber-physical space registration and VLM-based zero-shot anomaly detection pipelines.</li>
+                        
+                        <li class="ko-only"><strong>멀티모달 AI 연구 (KNU)</strong>: 다채널 비디오 자동 편집을 위한 음성-시각 융합 디코딩 아키텍처(M.S. 학위 논문), 감정 인식 모델(KCC 우수 수상), 군사 음향 감시 데이터셋(SCIE Nature Scientific Data), 호흡기 진단 Diffusion 모델(NeurIPS 워크숍) 연구.</li>
+                        <li class="en-only"><strong>Multimodal Research (KNU)</strong>: Designed multi-channel speech & visual late-fusion (WhisperX / Swin Transformer) for automated video editing, speech emotion recognition (KCC Awarded), constructed military audio datasets (Scientific Data / Nature Portfolio, 2024), and synthesized respiratory sound (NeurIPS DGM4H Workshop).</li>
+                        
+                        <li class="ko-only"><strong>3D 복원 & 로보틱스</strong>: 관상동맥의 3D 형상 복원을 위한 epipolar label 제한 Beer-Lambert 3DGS(Gaussian Splatting) 구축 및 Unity ROS 시뮬레이션 환경 내 VLA 로봇 제어 연동.</li>
+                        <li class="en-only"><strong>3D Reconstruction & Robotics</strong>: Implemented epipolar class-constrained Beer-Lambert radiative 3D Gaussian Splatting (3DGS) for sparse-view medical vessel reconstruction and integrated SmolVLA control policies in Unity ROS environments.</li>
+                    </ul>
+                    
+                    <div class="btn-group">
+                        <a href="mailto:chichi8969@naver.com" class="btn btn-primary">
+                            <span class="ko-only">✉️ 메시지 보내기</span>
+                            <span class="en-only">✉️ Send Message</span>
+                        </a>
+                        <a href="https://github.com/ChihyeonYoon" target="_blank" class="btn btn-secondary">
+                            <span class="ko-only">🔗 깃허브 프로필</span>
+                            <span class="en-only">🔗 GitHub Profile</span>
+                        </a>
+                        <a href="./YCH_CV.pdf" download="Chihyeon_Yun_CV.pdf" class="btn btn-secondary">
+                            <span class="ko-only">📥 이력서 (PDF)</span>
+                            <span class="en-only">📥 CV (PDF)</span>
+                        </a>
+                        <a href="./Portfolio.pdf" download="Chihyeon_Yun_Portfolio.pdf" class="btn btn-secondary">
+                            <span class="ko-only">📥 포트폴리오 (PDF)</span>
+                            <span class="en-only">📥 Portfolio (PDF)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
+ 
+        <!-- Experience Bento Box -->
+        <div class="bento-card col-8 reveal">
+            <h3 class="card-header-title">
+                <span class="ko-only">💼 연구 및 경력 타임라인</span>
+                <span class="en-only">💼 Research & Career Timeline</span>
+            </h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025.02 - 2025.06</div>
+                    <div class="timeline-title">ETRI (Electronics and Telecommunications Research Institute)</div>
+                    <div class="timeline-sub">
+                        <span class="ko-only">석사후연수연구원 | 가상 공간 시각 기반 위치 추정(VPS) 연구</span>
+                        <span class="en-only">Post-Master's Researcher | Virtual Space Visual Positioning System</span>
+                    </div>
+                    <ul class="timeline-desc-list">
+                        <li class="ko-only">물리-가상 공간 좌표 연동을 위한 고정밀 시각 기반 위치 추정(VPS) 알고리즘 개발.</li>
+                        <li class="en-only">Developed a high-accuracy Visual Positioning System (VPS) for cyber-physical space registration.</li>
+                        <li class="ko-only">메타버스 플랫폼 내 사용자 이상행위 제로샷 감지를 위한 VLM 기반 이상행위 분류기 설계.</li>
+                        <li class="en-only">Designed VLM-based zero-shot anomaly detection pipelines for metaverse platform participants.</li>
+                        <li class="ko-only">정부 R&D 국책 과제(연구 보고서 및 기술 요구사항 명세서) 공동 관리 및 학술 세미나 주관.</li>
+                        <li class="en-only">Managed joint research projects and authored technical specifications (Specs) for government-funded national R&D programs.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023.03 - 2025.02</div>
+                    <div class="timeline-title">Kyungpook National University</div>
+                    <div class="timeline-sub">
+                        <span class="ko-only">인공지능학 석사 | 멀티모달 언어 및 인지 연구실</span>
+                        <span class="en-only">M.S. in Artificial Intelligence | Multimodal Language & Cognition Lab</span>
+                    </div>
+                    <ul class="timeline-desc-list">
+                        <li class="ko-only">다채널 영상의 화자 분할 및 발화 상태 감지 기반 실시간 자동 카메라 편집 프레임워크(석사 학위 논문) 연구.</li>
+                        <li class="en-only">Developed a late-fusion and beam-search decoding framework for automated multi-camera video editing (Master's Thesis).</li>
+                        <li class="ko-only"><strong>군사 오디오 데이터셋 (SCIE)</strong>: 상황 인지 음향 분류 벤치마킹을 위한 군사 오디오 데이터셋(MAD) 구축 및 AST/CNN 벤치마킹 수행 (Scientific Data / Nature Portfolio, 2024).</li>
+                        <li class="en-only"><strong>Military Audio Dataset (SCIE)</strong>: Constructed the MAD dataset for surveillance and benchmarked AST / CNN audio classification models (Scientific Data / Nature Portfolio, 2024).</li>
+                        <li class="ko-only">특징 공간상에서의 CutMix 증강 및 지도 대조 학습(SupCon)을 결합한 한국어 감정 분류기 개발 (KCC 2023 우수 성과 / ETRI 경진대회 장려상).</li>
+                        <li class="en-only">Designed CutMix-SupCon text-speech emotion classification architectures (KCC / ETRI Competition Awarded).</li>
+                        <li class="ko-only">DiffWave 디퓨전 모델 기반 가상 호흡음 합성 및 도메인 정렬 적대적 미세조정(AFT) 아키텍처 개발 (NeurIPS DGM4H Workshop).</li>
+                        <li class="en-only">Built conditional neural vocoders (DiffWave) and domain-adversarial fine-tuning (AFT) for respiratory diagnostics (NeurIPS Workshop).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack Bento Box -->
+        <div class="bento-card col-4 reveal">
+            <h3 class="card-header-title">
+                <span class="ko-only">🛠️ 핵심 기술 스택 & 역량</span>
+                <span class="en-only">🛠️ Core Tech Stack & Skills</span>
+            </h3>
+            <div class="tech-categories">
+                <div>
+                    <div class="tech-category-title">
+                        <span class="ko-only">딥러닝 & 오디오</span>
+                        <span class="en-only">Deep Learning & Audio</span>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Transformers</span>
+                        <span class="tech-tag">DiffWave (Diffusion)</span>
+                        <span class="tech-tag">Ko-wav2vec 2.0</span>
+                        <span class="tech-tag">KLUE-RoBERTa</span>
+                        <span class="tech-tag">SupCon</span>
+                        <span class="tech-tag">WhisperX</span>
+                        <span class="tech-tag">Pyannote.audio</span>
+                        <span class="tech-tag">Librosa</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="tech-category-title">
+                        <span class="ko-only">비전 & 공간 AI</span>
+                        <span class="en-only">Vision & Spatial AI</span>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">3DGS (Gaussian Splatting)</span>
+                        <span class="tech-tag">Visual SLAM / VPS</span>
+                        <span class="tech-tag">MT-DUNet (DCNv2)</span>
+                        <span class="tech-tag">Swin Transformer</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">MediaPipe</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="tech-category-title">
+                        <span class="ko-only">VLM, 로보틱스 & 데브옵스</span>
+                        <span class="en-only">VLMs, Robotics & Devops</span>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">VLA / SmolVLA</span>
+                        <span class="tech-tag">VLM Zero-shot</span>
+                        <span class="tech-tag">ROS / ROS2</span>
+                        <span class="tech-tag">Unity Engine</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Pinecone</span>
+                        <span class="tech-tag">Vercel Serverless</span>
+                        <span class="tech-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Projects -->
+        <div id="projects" class="section-header reveal">
+            <h2>
+                <span class="ko-only">주요 프로젝트</span>
+                <span class="en-only">Featured Projects</span>
+            </h2>
+        </div>
+
+        <!-- Project 1: CAG 3DGS -->
+        <div class="bento-card col-12 reveal">
+            <div class="portfolio-item-flex">
+                <div class="portfolio-info-panel">
+                    <div class="project-tags-container">
+                        <span class="project-tag tag-themed">
+                            <span class="ko-only">AI 의료 영상 복원</span>
+                            <span class="en-only">AI Medical Imaging</span>
+                        </span>
+                        <span class="project-tag">
+                            <span class="ko-only">3D 형상 복원</span>
+                            <span class="en-only">3D Reconstruction</span>
+                        </span>
+                    </div>
+                    <h3 class="project-title">
+                        <a href="https://chihyeonyoon.github.io/cag-3dgs-dashboard/" target="_blank">LCA CAG 3DGS Reconstruction & Dashboard</a>
+                        <span class="project-tag project-tag-action">Live PoC</span>
+                    </h3>
+                    <p class="project-desc ko-only">
+                        2D Multi-Task Deformable UNet(MT-DUNet)과 Beer-Lambert 법칙 기반 3D Gaussian Splatting(3DGS)을 융합하여 희소한 2D C-arm X선 혈관 조영 영상으로부터 3D 관상동맥의 중심선, 반경 프로파일 및 형상을 복원하는 PoC 시스템.
+                    </p>
+                    <p class="project-desc en-only">
+                        A 3D volumetric reconstruction PoC that combines a 2D Multi-Task Deformable UNet (MT-DUNet) and Beer-Lambert radiative 3D Gaussian Splatting (3DGS) to recover 3D coronary artery structure, radius profile, and volume from sparse 2D C-arm X-ray angiograms.
+                    </p>
+                    <ul class="project-bullets">
+                        <li class="ko-only"><strong>Multi-Task Deformable UNet</strong>: DCNv2를 결합하여 굴곡진 혈관 형상에 대응하고, 바이너리 혈관 마스크와 25개 해부학적 분지 라벨을 동시에 예측.</li>
+                        <li class="en-only"><strong>Multi-Task Deformable UNet</strong>: Integrates deformable convolutions (DCNv2) to adapt to complex vessel tortuosity, simultaneously predicting binary vessel masks and 25 anatomical branch labels.</li>
+                        
+                        <li class="ko-only"><strong>클래스 제한 삼각측량</strong>: 다방향 뷰 매칭 시 동일 분지 라벨만 엄격히 투영시켜 허상(ghost-point)을 제거하고 4.5배 조밀한 3D 중심점 시드 생성.</li>
+                        <li class="en-only"><strong>Class-Constrained Triangulation</strong>: Prevents ghost-point artifacts in epipolar matching by strictly pairing identical anatomical branch labels across views, yielding a 4.5x denser 3D centerline seed.</li>
+                        
+                        <li class="ko-only"><strong>Beer-Lambert 3DGS</strong>: X선의 투과 특성을 수학적으로 모델링하여 시선 밀도를 적분하고 혈관 반경($r$) 및 불투명도($\alpha$)를 가중 연산 최적화.</li>
+                        <li class="en-only"><strong>Beer-Lambert Radiative 3DGS</strong>: Solves the transparency occlusion problem of X-ray projection by analytically integrating density along rays, optimizing vessel radius ($r$) and opacity ($\alpha$).</li>
+                        
+                        <li class="ko-only"><strong>연산 효율화</strong>: L4 GPU 상에서 데이터 포인트 다운샘플링과 다중 해상도 렌더링을 적용하여 GPU 메모리 8배 절감(2.5 GiB 동작).</li>
+                        <li class="en-only"><strong>High Efficiency</strong>: Achieved 8x GPU memory saving (2.5 GiB execution) on an L4 GPU via downsampling and multi-resolution rendering.</li>
+                    </ul>
+                    <div class="project-tech-stack">
+                        <span class="ko-only">사용 기술:</span>
+                        <span class="en-only">Tech Stack:</span>
+                        <span>PyTorch, 3DGS, Deformable Convolution (DCNv2), Python, HTML/JS</span>
+                    </div>
+                </div>
+                <div class="portfolio-preview-panel">
+                    <div class="frame-backdrop">
+                        <img src="./images/proj_cag_3dgs.png" alt="3DGS Reconstruction" class="project-img-display">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2: RAG Assistant -->
+        <div class="bento-card col-12 reveal">
+            <div class="portfolio-item-flex">
+                <div class="portfolio-info-panel">
+                    <div class="project-tags-container">
+                        <span class="project-tag tag-purple">
+                            <span class="ko-only">RAG 검색 시스템</span>
+                            <span class="en-only">RAG Systems</span>
+                        </span>
+                        <span class="project-tag">
+                            <span class="ko-only">서버리스 백엔드</span>
+                            <span class="en-only">Serverless Backend</span>
+                        </span>
+                    </div>
+                    <h3 class="project-title">
+                        <a href="https://github.com/ChihyeonYoon/Chihyeon.ai-Personal-RAG-Assistant" target="_blank">Chihyeon.ai Personal RAG Assistant</a>
+                        <span class="project-tag project-tag-action tag-purple-badge">AI Agent</span>
+                    </h3>
+                    <p class="project-desc ko-only">
+                        치현님의 학술 논문, 경력 상세 기술서 및 프로젝트 설명서 지식베이스를 연동하여, 방문자 질문에 사실 기반의 실시간 스트리밍 답변을 제공하는 고품질 AI 비서 챗봇.
+                    </p>
+                    <p class="project-desc en-only">
+                        A sophisticated personal RAG system that serves as an interactive AI secretary, providing high-fidelity, grounded answers based on my academic research papers, CV, and project documentation.
+                    </p>
+                    <ul class="project-bullets">
+                        <li class="ko-only"><strong>고품질 파싱</strong>: LlamaParse 및 Jina Reader API를 결합하여 학술 논문의 복잡한 표, 수식 기호, 그리고 동적 렌더링 웹 내용을 완벽히 추출.</li>
+                        <li class="en-only"><strong>High-Fidelity Parsing</strong>: Leverages LlamaParse and Jina Reader API to flawlessly extract complex academic layouts, mathematical formulas, and JS-rendered web content.</li>
+                        
+                        <li class="ko-only"><strong>글로벌 서버리스 아키텍처</strong>: Vercel Functions Proxy 서버를 경유하여 백엔드 API 키 노출을 완벽히 방지하고 접속 제한 문제를 해결.</li>
+                        <li class="en-only"><strong>Secure & Global Architecture</strong>: Uses a Vercel-based proxy to secure API credentials and bypass regional restrictions, ensuring a seamless experience for visitors worldwide.</li>
+                        
+                        <li class="ko-only"><strong>고속 임베딩 질의</strong>: 3072차원의 Pinecone 벡터 데이터베이스 공간에 저장하고 Gemini 2.5 Flash를 사용하여 지연 없는 답변 전송.</li>
+                        <li class="en-only"><strong>State-of-the-Art Intelligence</strong>: Powered by Gemini 2.5 Flash for near-instant, streaming responses grounded in a high-dimensional (3072-dim) Pinecone vector space.</li>
+                    </ul>
+                    <div class="project-tech-stack">
+                        <span class="ko-only">사용 기술:</span>
+                        <span class="en-only">Tech Stack:</span>
+                        <span>Gemini 2.5 Flash, Pinecone (Serverless), Vercel Functions, LlamaParse, Jina Reader, Python, Vanilla JS</span>
+                    </div>
+                </div>
+                <div class="portfolio-preview-panel">
+                    <div class="frame-backdrop">
+                        <img src="./images/proj_rag_assistant.svg" alt="RAG Assistant Architecture" class="project-img-display">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3: SmolVLA Pick and Place -->
+        <div class="bento-card col-12 reveal">
+            <div class="portfolio-item-flex">
+                <div class="portfolio-info-panel">
+                    <div class="project-tags-container">
+                        <span class="project-tag tag-teal">
+                            <span class="ko-only">로보틱스</span>
+                            <span class="en-only">Robotics</span>
+                        </span>
+                        <span class="project-tag">
+                            <span class="ko-only">시뮬레이션</span>
+                            <span class="en-only">Simulation</span>
+                        </span>
+                    </div>
+                    <h3 class="project-title">
+                        <a href="https://github.com/ChihyeonYoon/Unity_PickAndPlace_Integration_SmolVLA" target="_blank">Unity Pick and Place Integration with SmolVLA</a>
+                    </h3>
+                    <p class="project-desc ko-only">
+                        다중 모달리티 행동 제어 모델인 SmolVLA를 활용하여 로봇 팔의 '물건 집기 및 놓기 (Pick and Place)' 동작을 Unity 3D 가상 물리 엔진상에서 시뮬레이션 및 제어 연동한 개발 건.
+                    </p>
+                    <p class="project-desc en-only">
+                        An end-to-end integration of the SmolVLA (Vision-Language-Action) model within a Unity simulation environment to perform robotic 'Pick and Place' tasks.
+                    </p>
+                    <ul class="project-bullets">
+                        <li class="ko-only"><strong>바이브 코딩(Vibe Coding) 방법론</strong>: 인공지능 어시스턴트(LLM)와 적극 협업하여 복잡한 네트워크 통신 및 시스템 연동 보일러플레이트 코드를 신속히 빌드하고, 핵심인 로봇 의사결정 모델 구조 설계에 집중.</li>
+                        <li class="en-only"><strong>Vibe Coding Methodology</strong>: Actively embraced the Vibe Coding paradigm by leveraging LLMs to handle complex boilerplate and system interfacing, allowing me to focus on high-level architecture and the reasoning logic of the VLA model.</li>
+                        
+                        <li class="ko-only"><strong>통신 파이프라인 연계</strong>: ROS-Unity Integration 기술을 응용하여 가상 공간의 이미지 피드를 딥러닝 추론 서버로 전달하고, 출력된 Action 모션을 가상 관절 토크로 피드백하는 전이 파이프라인 구축.</li>
+                        <li class="en-only"><strong>Communication Pipeline</strong>: Successfully established the communication pipeline between Unity and a ROS-based SmolVLA inference node.</li>
+                    </ul>
+                    <div class="project-tech-stack">
+                        <span class="ko-only">사용 기술:</span>
+                        <span class="en-only">Tech Stack:</span>
+                        <span>SmolVLA, Multimodal LLM, Unity Engine, ROS, Docker, PyTorch</span>
+                    </div>
+                </div>
+                <div class="portfolio-preview-panel">
+                    <div class="frame-backdrop">
+                        <img src="./images/proj_smolvla.svg" alt="Robotic Control Pipeline" class="project-img-display">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Publications -->
+        <div id="publications" class="section-header reveal">
+            <h2>
+                <span class="ko-only">논문 및 학술 발표 실적</span>
+                <span class="en-only">Publications</span>
+            </h2>
+        </div>
+
+        <!-- Pub 1 -->
+        <div class="bento-card col-12 reveal">
+            <div class="portfolio-item-flex">
+                <div class="portfolio-info-panel">
+                    <div class="pub-number">01</div>
+                    <div class="pub-venue">
+                        <span class="ko-only">국제 학술지 제출 대기 중 (Pending Submission)</span>
+                        <span class="en-only">Journal Submission (Pending)</span>
+                    </div>
+                    <h4 class="pub-title">"Seamless Multi-Hypothesis Video Editing Using Deep Multimodal Analysis Over Multi-Channel Sources"</h4>
+                    <p class="pub-desc ko-only">
+                        다채널 카메라 환경에서 취합된 시각(얼굴/발화 행동) 및 청각(오디오 스트림) 신호를 융합 분석하고 전문가의 컷 전환 문맥을 학습하여 자연스러운 편집 비디오를 자동 생성하는 엔드투엔드 시스템.
+                    </p>
+                    <p class="pub-desc en-only">
+                        A system that automatically generates professional-level video edits by analyzing visual and audio data collected from multi-camera environments.
+                    </p>
+                    <p class="pub-tech">
+                        <strong class="ko-only">사용 기술:</strong>
+                        <strong class="en-only">Tech Stack:</strong> Speaker State Estimation, Multi-Hypothesis Generation, Beam Search Optimization.
+                    </p>
+                </div>
+                <div class="portfolio-preview-panel">
+                    <div class="frame-backdrop">
+                        <img src="./images/pub_video_editing.png" alt="Video Editing" class="project-img-display">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pub 2 -->
+        <div class="bento-card col-12 reveal">
+            <div class="portfolio-item-flex">
+                <div class="portfolio-info-panel">
+                    <div class="pub-number">02</div>
+                    <div class="pub-venue">
+                        <span class="ko-only">Scientific Data (Nature Portfolio, SCIE, 2024)</span>
+                        <span class="en-only">Scientific Data (Nature, 2024)</span>
+                    </div>
+                    <h4 class="pub-title">"A Military Audio Dataset for Situational Awareness and Surveillance"</h4>
+                    <p class="pub-desc ko-only">
+                        전쟁 및 경비 보안 환경의 특수성을 고려하여 총성, 포격, 교신 등 7대 핵심 군사 위험 소리를 수집하고 AST(Audio Spectrogram Transformer) 모델을 벤치마크 튜닝하여 91.07% 정확도를 확보한 공개 데이터셋.
+                    </p>
+                    <p class="pub-desc en-only">
+                        Constructed a high-quality audio dataset for situational awareness in specialized environments (military/surveillance) and contributed to domain-specific research.
+                    </p>
+                    <div class="pub-links">
+                        <a href="https://www.nature.com/articles/s41597-024-03511-w" target="_blank" class="pub-link">🔗 Scientific Data</a>
+                        <a href="https://www.kaggle.com/datasets/junewookim/mad-dataset-military-audio-dataset" target="_blank" class="pub-link">
+                            <span class="ko-only">💾 데이터셋</span>
+                            <span class="en-only">💾 Dataset</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-preview-panel">
+                    <div class="frame-backdrop">
+                        <img src="./images/pub_military_audio.png" alt="Military Audio Dataset" class="project-img-display">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pub 3 -->
+        <div class="bento-card col-12 reveal">
+            <div class="portfolio-item-flex">
+                <div class="portfolio-info-panel">
+                    <div class="pub-number">03</div>
+                    <div class="pub-venue">
+                        <span class="ko-only">NeurIPS 2023 DGM4H Workshop (국제 학술대회 발표, 2023)</span>
+                        <span class="en-only">NeurIPS Workshop (2023)</span>
+                    </div>
+                    <h4 class="pub-title">"Adversarial Fine-tuning using Generated Respiratory Sound to Address Class Imbalance"</h4>
+                    <p class="pub-desc ko-only">
+                        의료 인공지능 진단의 클래스 불균형을 해결하기 위해 DiffWave 생성 모델을 설계하고, 원본과 생성 데이터 간의 분포 차이를 보완하는 적대적 미세조정(AFT) 기법을 제안하여 소수 질환 분류 정확도를 최대 26.58% 향상한 연구.
+                    </p>
+                    <p class="pub-desc en-only">
+                        Proposed an Adversarial Fine-tuning technique to overcome data imbalance in the Medical AI domain by utilizing data generated through an Audio Diffusion Neural Vocoder.
+                    </p>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2311.06480" target="_blank" class="pub-link">📄 arXiv</a>
+                        <a href="https://github.com/ChihyeonYoon/Adversarial-Fine-tuning-using-Generated-Respiratory-Sound-to-Address-Class-Imbalance" target="_blank" class="pub-link">💻 GitHub</a>
+                        <a href="https://openreview.net/forum?id=z1AVG5LDQ7" target="_blank" class="pub-link">
+                            <span class="ko-only">🏫 학술대회</span>
+                            <span class="en-only">🏫 Conference</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-preview-panel">
+                    <div class="frame-backdrop">
+                        <img src="./images/pub_respiratory_sound.png" alt="Respiratory Sound" class="project-img-display">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pub 4 -->
+        <div class="bento-card col-12 reveal">
+            <div class="portfolio-item-flex">
+                <div class="portfolio-info-panel">
+                    <div class="pub-number">04</div>
+                    <div class="pub-venue">
+                        <span class="ko-only">한국컴퓨터종합학술대회 (KCC 2023, 경진대회 장려상)</span>
+                        <span class="en-only">KCC Proceedings (2023)</span>
+                    </div>
+                    <h4 class="pub-title">"CutMix-SupCon: Supervised Contrastive Learning with CutMix Augmentation for Multimodal-based Emotion Recognition"</h4>
+                    <p class="pub-desc ko-only">
+                        한국어 음성(wav2vec 2.0) 및 텍스트(KLUE-RoBERTa) 인코더 임베딩 특징을 특징 공간상에서 결합(Latent CutMix)하고 지도 대조 학습(SupCon)을 통해 정렬하여 멀티모달 감정 분류 성능을 향상한 연구.
+                    </p>
+                    <p class="pub-desc en-only">
+                        Enhanced the efficiency of multimodal emotion recognition by combining Feature-level CutMix augmentation with Supervised Contrastive Learning (SupCon) to address data imbalance.
+                    </p>
+                    <div class="pub-links">
+                        <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11488648" target="_blank" class="pub-link">
+                            <span class="ko-only">🔗 DBpia 링크</span>
+                            <span class="en-only">🔗 DBpia Link</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-preview-panel">
+                    <div class="frame-backdrop">
+                        <img src="./images/pub_emotion_recognition.png" alt="Emotion Recognition" class="project-img-display">
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+    <!-- Footer -->
+    <footer class="portfolio-footer">
+        <span class="ko-only">© 2026 윤치현. All rights reserved.</span>
+        <span class="en-only">© 2026 Chihyeon Yun. All rights reserved.</span>
+    </footer>
 </div>
 
-<script>
-    fetch('./README.md')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('README.md 파일을 불러오는데 실패했습니다.');
-            }
-            return response.text();
-        })
-        .then(text => {
-            document.getElementById('readme-content').innerHTML = marked.parse(text);
-        })
-        .catch(error => {
-            document.getElementById('readme-content').innerHTML = `<p style="color: #ff6b6b; text-align: center; font-weight: bold;">${error.message}</p>`;
-        });
-</script>
-
-<!-- Floating Chatbot Widget -->
-<div id="rag-chatbot-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: 'Roboto', sans-serif;">
-    <button id="chat-toggle-btn" style="height: 55px; padding: 0 20px; border-radius: 30px; background-color: #3498db; color: white; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-size: 15px; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
-        <span id="chat-toggle-icon" style="font-size: 22px; line-height: 1;">💬</span>
-        <span id="chat-toggle-text">Chihyeon.ai RAG Assistant</span>
+<!-- Redesigned Glassmorphic Floating Chatbot Widget -->
+<div id="rag-chatbot-widget">
+    <button id="chat-toggle-btn">
+        <span id="chat-toggle-icon">💬</span>
+        <span id="chat-toggle-text">
+            <span class="ko-only">비서봇과 대화하기</span>
+            <span class="en-only">Talk to RAG Assistant</span>
+        </span>
     </button>
 
-    <div id="chat-window" style="display: none; position: absolute; bottom: 80px; right: 0; width: 350px; height: 500px; background-color: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); flex-direction: column; overflow: hidden; border: 1px solid #ddd;">
-        <div style="background-color: #3498db; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
+    <div id="chat-window">
+        <div class="chat-header">
             <span>Chihyeon.ai Assistant</span>
-            <button id="close-chat" style="background: none; border: none; color: white; cursor: pointer; font-size: 18px;">✕</button>
+            <button id="close-chat">✕</button>
         </div>
 
-        <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 14px; background: #fdfdfd;">
-            <div style="background: #e1f5fe; padding: 8px 12px; border-radius: 8px; align-self: flex-start; max-width: 80%;">안녕하세요! 인공지능 연구원 윤치현님의 비서입니다. 치현님의 연구나 포트폴리오에 대해 궁금한 점을 물어보세요!</div>
+        <div id="chat-messages">
+            <div class="chat-intro-bubble">
+                <span class="ko-only">안녕하세요! 인공지능 연구원 윤치현님의 비서입니다. 치현님의 연구나 포트폴리오에 대해 궁금한 점을 물어보세요!</span>
+                <span class="en-only">Hello! I am AI Researcher Chihyeon Yun's assistant. Feel free to ask me anything about Chihyeon's research, experience, or portfolio!</span>
+            </div>
         </div>
 
-        <div style="padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px;">
-            <input type="text" id="chat-input" placeholder="질문을 입력하세요..." style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px; outline: none;">
-            <button id="send-btn" style="padding: 8px 15px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">전송</button>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Ask about projects, papers, or experience...">
+            <button id="send-btn">
+                <span class="ko-only">전송</span>
+                <span class="en-only">Send</span>
+            </button>
         </div>
     </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('chat-toggle-btn');
-    const chatWindow = document.getElementById('chat-window');
-    const closeBtn = document.getElementById('close-chat');
-    const sendBtn = document.getElementById('send-btn');
-    const chatInput = document.getElementById('chat-input');
-    const chatMessages = document.getElementById('chat-messages');
+<!-- Image Lightbox Overlay -->
+<div id="lightbox" class="lightbox-modal">
+    <div class="lightbox-content-wrapper">
+        <div class="lightbox-controls">
+            <button id="zoom-out-btn" class="lightbox-ctrl-btn" title="Zoom Out">➖</button>
+            <button id="zoom-reset-btn" class="lightbox-ctrl-btn" title="Reset Size">↺</button>
+            <button id="zoom-in-btn" class="lightbox-ctrl-btn" title="Zoom In">➕</button>
+            <button class="lightbox-close-btn-fixed" id="lightbox-close">✕</button>
+        </div>
+        <div class="lightbox-img-container" id="lightbox-img-container">
+            <img class="lightbox-img" id="lightbox-img" src="" alt="Zoomed Preview">
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+</div>
 
-    // Vercel Serverless Function URL (치현님이 배포 후 변경할 주소)
-    const WORKER_URL = "https://y-chihyeon.vercel.app/api"; 
-
-    const toggleIcon = document.getElementById('chat-toggle-icon');
-    const toggleText = document.getElementById('chat-toggle-text');
-    let isOpen = false;
-    let chatHistory = []; // 대화 맥락 기억용
-
-    toggleBtn.onclick = () => {
-        isOpen = !isOpen;
-        chatWindow.style.display = isOpen ? 'flex' : 'none';
-        if (isOpen) {
-            toggleIcon.textContent = '✕';
-            toggleText.textContent = '닫기';
-            toggleBtn.style.backgroundColor = '#e74c3c'; // 열렸을 때 빨간색으로 변경
-        } else {
-            toggleIcon.textContent = '💬';
-            toggleText.textContent = 'Chihyeon.ai RAG Assistant';
-            toggleBtn.style.backgroundColor = '#3498db'; // 닫혔을 때 원래 파란색
-        }
-    };
-
-    closeBtn.onclick = () => {
-        isOpen = false;
-        chatWindow.style.display = 'none';
-        toggleIcon.textContent = '💬';
-        toggleText.textContent = 'Chihyeon.ai RAG Assistant';
-        toggleBtn.style.backgroundColor = '#3498db';
-    };
-
-    function addMessage(sender, text) {
-        const msgDiv = document.createElement('div');
-        msgDiv.style.padding = '8px 12px';
-        msgDiv.style.borderRadius = '8px';
-        msgDiv.style.maxWidth = '85%';
-        msgDiv.style.wordBreak = 'break-word';
-        msgDiv.style.fontSize = '13px';
-        msgDiv.style.lineHeight = '1.4';
-        
-        if (sender === 'user') {
-            msgDiv.style.backgroundColor = '#3498db';
-            msgDiv.style.color = 'white';
-            msgDiv.style.alignSelf = 'flex-end';
-            msgDiv.textContent = text;
-        } else {
-            msgDiv.style.backgroundColor = '#f1f1f1';
-            msgDiv.style.color = '#333';
-            msgDiv.style.alignSelf = 'flex-start';
-            if (window.marked) {
-                msgDiv.innerHTML = marked.parse(text);
-            } else {
-                msgDiv.textContent = text;
-            }
-        }
-        chatMessages.appendChild(msgDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        return msgDiv;
-    }
-
-    sendBtn.onclick = async () => {
-        const text = chatInput.value.trim();
-        if (!text) return;
-        
-        if (WORKER_URL === "YOUR_VERCEL_APP_URL/api") {
-            addMessage('ai', '서버 점검 중입니다. (Vercel URL을 설정해주세요.)');
-            return;
-        }
-
-        addMessage('user', text);
-        chatInput.value = '';
-        // 사용자 질문을 역사에 추가
-        chatHistory.push({ role: 'user', text: text });
-        const loadingMsg = addMessage('ai', '생각 중...');
-        
-        try {
-            const response = await fetch(WORKER_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ query: text, history: chatHistory.slice(-4) }) // 최근 4개 대화만 전송
-            });
-            
-            if (!response.ok) {
-                const errData = await response.json();
-                throw new Error(errData.error || "서버 응답 오류");
-            }
-
-            const reader = response.body.getReader();
-            const decoder = new TextDecoder("utf-8");
-            let fullResponse = "";
-            loadingMsg.textContent = "";
-
-            while (true) {
-                const { value, done } = await reader.read();
-                if (done) break;
-                const chunk = decoder.decode(value, { stream: true });
-                const lines = chunk.split('\n');
-                for (const line of lines) {
-                    if (line.startsWith('data: ')) {
-                        const dataStr = line.slice(6);
-                        if (dataStr.trim() === "[DONE]") continue;
-                        try {
-                            const data = JSON.parse(dataStr);
-                            const chunkText = data.candidates[0].content.parts[0].text;
-                            fullResponse += chunkText;
-                            loadingMsg.innerHTML = window.marked ? marked.parse(fullResponse) : fullResponse;
-                            chatMessages.scrollTop = chatMessages.scrollHeight;
-                        } catch(e) {}
-                    }
-                }
-            }
-            // AI 답변이 완료되면 역사에 추가
-            if (fullResponse) {
-                chatHistory.push({ role: 'model', text: fullResponse });
-            }
-        } catch (e) {
-            console.error("Chat error:", e);
-            loadingMsg.textContent = '❌ 오류 발생: ' + e.message;
-        }
-    };
-
-    chatInput.onkeypress = (e) => { if (e.key === 'Enter') sendBtn.click(); };
-});
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
