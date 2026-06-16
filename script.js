@@ -394,6 +394,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // 6. Copy Email to Clipboard & Show Premium Toast
+    const emailBtn = document.getElementById('email-btn');
+    if (emailBtn) {
+        emailBtn.addEventListener('click', (e) => {
+            const email = "chichi8969@naver.com";
+            navigator.clipboard.writeText(email).then(() => {
+                showToast(email);
+            }).catch(err => {
+                console.error("Clipboard copy failed:", err);
+            });
+        });
+    }
+
+    function showToast(email) {
+        const existingToast = document.getElementById('email-toast');
+        if (existingToast) existingToast.remove();
+
+        const toast = document.createElement('div');
+        toast.id = 'email-toast';
+        const isKo = document.body.classList.contains('lang-ko');
+        if (isKo) {
+            toast.innerHTML = `✉️ 이메일 주소가 복사되었습니다!<br><strong style="font-size: 0.9rem;">${email}</strong>`;
+        } else {
+            toast.innerHTML = `✉️ Email copied to clipboard!<br><strong style="font-size: 0.9rem;">${email}</strong>`;
+        }
+        document.body.appendChild(toast);
+        toast.offsetHeight; // force reflow
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
+    }
+
     koBtn.addEventListener('click', () => setLanguage('ko'));
     enBtn.addEventListener('click', () => setLanguage('en'));
 
