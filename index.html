@@ -66,14 +66,23 @@
                         <span class="en-only">AI Researcher & Engineer specializing in Multimodal Learning, 3D Spatial Computing (3DGS / VPS), Medical AI, and Vision-Language-Action (VLA) Robotics.</span>
                     </p>
                     <ul class="hero-desc-list">
-                        <li class="ko-only"><strong>공간 AI & 메타버스 (ETRI)</strong>: 현실-가상 연동을 위한 초정밀 시각 기반 위치 추정(VPS) 알고리즘 및 VLM 기반 이상행위 제로샷 탐지 기술 개발.</li>
-                        <li class="en-only"><strong>Spatial AI & Metaverse (ETRI)</strong>: Engineered high-accuracy Visual Positioning Systems (VPS) for cyber-physical space registration and VLM-based zero-shot anomaly detection pipelines.</li>
-                        
-                        <li class="ko-only"><strong>멀티모달 AI 연구 (KNU)</strong>: 다채널 비디오 자동 편집을 위한 음성-시각 융합 디코딩 아키텍처(M.S. 학위 논문), 감정 인식 모델(KCC 우수 수상), 군사 음향 감시 데이터셋(SCIE Nature Scientific Data), 호흡기 진단 Diffusion 모델(NeurIPS 워크숍) 연구.</li>
-                        <li class="en-only"><strong>Multimodal Research (KNU)</strong>: Designed multi-channel speech & visual late-fusion (WhisperX / Swin Transformer) for automated video editing, speech emotion recognition (KCC Awarded), constructed military audio datasets (Scientific Data / Nature Portfolio, 2024), and synthesized respiratory sound (NeurIPS DGM4H Workshop).</li>
-                        
-                        <li class="ko-only"><strong>3D 복원 & 로보틱스</strong>: 관상동맥의 3D 형상 복원을 위한 epipolar label 제한 Beer-Lambert 3DGS(Gaussian Splatting) 구축 및 Unity ROS 시뮬레이션 환경 내 VLA 로봇 제어 연동.</li>
-                        <li class="en-only"><strong>3D Reconstruction & Robotics</strong>: Implemented epipolar class-constrained Beer-Lambert radiative 3D Gaussian Splatting (3DGS) for sparse-view medical vessel reconstruction and integrated SmolVLA control policies in Unity ROS environments.</li>
+                        <li class="ko-only"><strong>멀티모달 자동 편집 (석사 연구 & First Author)</strong>: 발화 인지 Swin Transformer와 Diarization (WhisperX / Pyannote) 오디오-비주얼 신호를 융합 분석하고 빔 서치(Beam Search)로 최적 채널 시퀀스를 추정하는 Late-Fusion 프레임워크 연구 (전문가 대비 90.10% 일치).</li>
+                        <li class="en-only"><strong>Multimodal Auto-Editing (M.S. & First Author)</strong>: Designed visual speaking-state (Swin Transformer) and audio diarization (WhisperX / Pyannote) late-fusion frameworks, utilizing Beam Search decoding to estimate optimal camera cuts (achieved 90.10% agreement with experts).</li>
+
+                        <li class="ko-only"><strong>공간 AI & 메타버스 (ETRI 실무)</strong>: 가상-현실 공간 매핑을 위한 시각 기반 위치 추정(VPS) Localization 파이프라인 개발 및 모바일 XR 테스트베드 검증. VLM 적용 시맨틱 분석 기반 제로샷(Zero-shot) 이상행위 실시간 탐지 알고리즘 설계.</li>
+                        <li class="en-only"><strong>Spatial AI & Metaverse (ETRI R&D)</strong>: Engineered high-accuracy indoor Visual Positioning Systems (VPS) for cyber-physical space registration, and designed Visual-Language Model (VLM) zero-shot anomaly detection pipelines for real-time video semantics.</li>
+
+                        <li class="ko-only"><strong>군사 오디오 감시 (Nature Scientific Data, SCIE)</strong>: 국방 도메인 감시 체계를 위한 최초의 전장 위험음 데이터셋(MAD, 8,075 샘플) 구축 및 80차원 로그 멜 필터뱅크 피쳐 파이프라인 설계, 트랜스포머(AST-Patch-Mix) 오디오 분류 벤치마크 수행 (정확도 91.07%).</li>
+                        <li class="en-only"><strong>Acoustic Surveillance (Scientific Data, Nature SCIE)</strong>: Built the first open Military Audio Dataset (MAD, 8,075 samples) for situational awareness, designed log-Mel filterbank feature extractions, and benchmarked Audio Spectrogram Transformers (AST, 91.07% accuracy).</li>
+
+                        <li class="ko-only"><strong>의료 AI & 디퓨전 생성 (NeurIPS 워크숍)</strong>: 호흡음 데이터 불균형 해결을 위한 DiffWave(conditional neural vocoder) 생성 모델 설계 및 잠재 공간 도메인 정렬을 위한 적대적 미세조정(AFT) 기법 제안 (소수 질환 분류 성능 최대 26.58% 개선).</li>
+                        <li class="en-only"><strong>Medical AI & Audio Diffusion (NeurIPS Workshop)</strong>: Addressed diagnostic data scarcity via conditional audio diffusion (DiffWave) synthesis and designed Adversarial Fine-Tuning (AFT) models to align domain features (improving minority class classification by up to 26.58%).</li>
+
+                        <li class="ko-only"><strong>3D 복원 & VLA 로보틱스 (PoC)</strong>: 2D MT-DUNet(DCNv2)과 Beer-Lambert 3DGS를 결합한 sparse-view X-ray 관상동맥 3D 복원 알고리즘 최적화(L4 GPU 메모리 8배 절감). SmolVLA 기반 Unity ROS 로봇 제어(Pick & Place) 파이프라인 구축.</li>
+                        <li class="en-only"><strong>3D Reconstruction & VLA Robotics (PoC)</strong>: Coupled 2D MT-DUNet (DCNv2) and Beer-Lambert radiative 3DGS for coronary artery 3D reconstruction under extreme memory optimization, and integrated SmolVLA control in Unity ROS simulation environments.</li>
+
+                        <li class="ko-only"><strong>멀티모달 감정 인식 (KCC 우수 & ETRI 경진대회)</strong>: 텍스트(KLUE-RoBERTa) 및 오디오(wav2vec 2.0) 임베딩의 특징 공간(Latent Space)상 CutMix 증강 및 지도 대조 학습(SupCon) 유사도 정렬 파이프라인 설계 (F1-score 71.17% 달성, 장려상 수상).</li>
+                        <li class="en-only"><strong>Multimodal Emotion Recognition (KCC & ETRI Award)</strong>: Integrated text (KLUE-RoBERTa) and speech (wav2vec 2.0) encoders using Latent CutMix augmentation and Supervised Contrastive Learning (SupCon) for cosine similarity alignment (F1-score 71.17%).</li>
                     </ul>
                     
                     <div class="btn-group">
