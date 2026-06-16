@@ -181,9 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
         msgDiv.style.lineHeight = '1.4';
         
         if (sender === 'user') {
-            msgDiv.style.background = 'linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(139, 92, 246, 0.25))';
-            msgDiv.style.border = '1px solid rgba(96, 165, 250, 0.3)';
-            msgDiv.style.color = '#e0f2fe';
+            msgDiv.style.background = 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))';
+            msgDiv.style.border = 'none';
+            msgDiv.style.color = '#ffffff';
             msgDiv.style.alignSelf = 'flex-end';
             msgDiv.textContent = text;
         } else {
