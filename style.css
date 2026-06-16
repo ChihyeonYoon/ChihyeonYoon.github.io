@@ -675,6 +675,10 @@ header {
     right: 0;
     width: 370px;
     height: 520px;
+    min-width: 280px;
+    max-width: 700px;
+    min-height: 380px;
+    max-height: 800px;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(20px) saturate(140%);
     border-radius: 20px;
@@ -682,6 +686,34 @@ header {
     flex-direction: column;
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#chat-resize-handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    cursor: nwse-resize;
+    z-index: 1010;
+}
+
+#chat-resize-handle::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid rgba(0, 0, 0, 0.15);
+    border-left: 2px solid rgba(0, 0, 0, 0.15);
+    border-top-left-radius: 2px;
+    transition: border-color 0.2s;
+}
+
+#chat-resize-handle:hover::before {
+    border-top-color: var(--accent-blue);
+    border-left-color: var(--accent-blue);
 }
 
 .chat-header {

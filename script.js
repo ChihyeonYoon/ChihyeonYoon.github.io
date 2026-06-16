@@ -129,6 +129,48 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleBtn.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.3)';
     };
 
+    // Chat window resizing (Anchored at bottom-right)
+    const resizeHandle = document.getElementById('chat-resize-handle');
+    if (resizeHandle) {
+        let isResizing = false;
+        let initialWidth = 0;
+        let initialHeight = 0;
+        let initialMouseX = 0;
+        let initialMouseY = 0;
+
+        resizeHandle.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            initialWidth = chatWindow.offsetWidth;
+            initialHeight = chatWindow.offsetHeight;
+            initialMouseX = e.clientX;
+            initialMouseY = e.clientY;
+            
+            document.body.style.userSelect = 'none';
+            
+            window.addEventListener('mousemove', handleMouseMove);
+            window.addEventListener('mouseup', handleMouseUp);
+        });
+
+        function handleMouseMove(e) {
+            if (!isResizing) return;
+            const dx = initialMouseX - e.clientX;
+            const dy = initialMouseY - e.clientY;
+            
+            const newWidth = Math.max(280, Math.min(700, initialWidth + dx));
+            const newHeight = Math.max(380, Math.min(800, initialHeight + dy));
+            
+            chatWindow.style.width = newWidth + 'px';
+            chatWindow.style.height = newHeight + 'px';
+        }
+
+        function handleMouseUp() {
+            isResizing = false;
+            document.body.style.userSelect = 'auto';
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+        }
+    }
+
     function addMessage(sender, text) {
         const msgDiv = document.createElement('div');
         msgDiv.style.padding = '10px 14px';
