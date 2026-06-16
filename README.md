@@ -143,7 +143,7 @@ You can view my CV and Portfolio online via the link below.
 
 </div>
 <div class="portfolio-preview" style="flex: 0.7; min-width: 280px; text-align: center;">
-<img src="./images/proj_smolvla.gif" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 1px solid #7a7e81;" />
+<img src="./images/proj_smolvla.png" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 1px solid #7a7e81;" />
 </div>
 </div>
 
