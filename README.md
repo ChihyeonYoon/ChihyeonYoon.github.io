@@ -56,21 +56,7 @@ You can view my CV and Portfolio online via the link below.
 
 ### 👨‍💻 Projects
 
-#### [LCA CAG 3DGS Reconstruction & Dashboard](https://github.com/ChihyeonYoon/cag-3dgs-dashboard) **[TRY MY DEMO!](https://chihyeonyoon.github.io/cag-3dgs-dashboard/)** | [Research Code](https://github.com/ChihyeonYoon/cag-3dgs-research-code)
-
-*   **Overview**: A 3D volumetric reconstruction PoC that combines a 2D Multi-Task Deformable UNet (MT-DUNet) and Beer-Lambert radiative 3D Gaussian Splatting (3DGS) to recover 3D coronary artery structure, radius profile, and volume from sparse 2D C-arm X-ray angiograms.
-*   **Key Features**:
-    *   Multi-Task Deformable UNet: Integrates deformable convolutions (DCNv2) to adapt to complex vessel tortuosity, simultaneously predicting binary vessel masks and 25 anatomical branch labels.
-    *   Class-Constrained Triangulation: Prevents ghost-point artifacts in epipolar matching by strictly pairing identical anatomical branch labels across views, yielding a 4.5x denser 3D centerline seed.
-    *   Beer-Lambert Radiative 3DGS: Solves the transparency occlusion problem of X-ray projection by analytically integrating density along rays, optimizing vessel radius ($r$) and opacity ($\alpha$).
-*   **Achievements**:
-    *   Achieved 76.55% Dice on ARCADE test set, significantly outperforming original YOLOv8x baseline (49.00%).
-    *   Achieved 84.96% Mean Projection Dice on 3DGS novel-view projection.
-    *   Memory & Computational Efficiency: Implements point downsampling and multi-resolution rendering, achieving 8x GPU memory saving (2.5 GiB execution) on an L4 GPU.
-*   **Tech Stack**: PyTorch, 3DGS, Deformable Convolution (DCNv2), Python, HTML/JS.
-
-
-#### [LCA CAG 3DGS Reconstruction & Dashboard](https://github.com/ChihyeonYoon/cag-3dgs-dashboard) **[TRY MY DASHBOARD!](https://chihyeonyoon.github.io/cag-3dgs-dashboard/)** | [Research Code](https://github.com/ChihyeonYoon/cag-3dgs-research-code)
+#### [LCA CAG 3DGS Reconstruction & Dashboard](https://chihyeonyoon.github.io/cag-3dgs-dashboard/) **[TRY MY DASHBOARD!]**
 
 *   **Overview**: A 3D volumetric reconstruction PoC that combines a 2D Multi-Task Deformable UNet (MT-DUNet) and Beer-Lambert radiative 3D Gaussian Splatting (3DGS) to recover 3D coronary artery structure, radius profile, and volume from sparse 2D C-arm X-ray angiograms.
 *   **Key Features**:
