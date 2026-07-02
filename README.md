@@ -11,7 +11,7 @@
   <a href="https://chihyeonyoon.github.io/">
     <img src="https://img.shields.io/badge/Portfolio-28CF75?style=flat-square&logo=googlechrome&logoColor=white"/>
   </a>
-  <a href="mailto:chichi8969@naver.com">
+  <a href="mailto:yoonchihyeon@gmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=Gmail&logoColor=white"/>
   </a>
 </p>
@@ -150,7 +150,7 @@ You can view my CV and Portfolio online via the link below.
 ---
 
 ### 📩 Contact
-* **Email**: [chichi8969@naver.com](mailto:chichi8969@naver.com)
+* **Email**: [yoonchihyeon@gmail.com](mailto:yoonchihyeon@gmail.com)
 * **GitHub**: [@ChihyeonYoon](https://github.com/ChihyeonYoon)
 
 ---

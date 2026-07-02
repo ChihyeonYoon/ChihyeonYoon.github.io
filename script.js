@@ -584,7 +584,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailBtn = document.getElementById('email-btn');
     if (emailBtn) {
         emailBtn.addEventListener('click', (e) => {
-            const email = "chichi8969@naver.com";
+            const email = "yoonchihyeon@gmail.com";
             navigator.clipboard.writeText(email).then(() => {
                 showToast(email);
             }).catch(err => {
